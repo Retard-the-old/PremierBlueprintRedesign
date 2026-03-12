@@ -1,0 +1,2403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premier Blueprint — Dubai Real Estate Operating System</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   PREMIER BLUEPRINT — PREMIUM DESIGN SYSTEM
+   Stripe / Linear / Vercel tier visual quality
+   ═══════════════════════════════════════════════ */
+
+:root {
+  --bg-deep: #050508;
+  --bg-surface: #0c0c10;
+  --bg-elevated: #111116;
+  --bg-glass: rgba(255, 255, 255, 0.035);
+  --bg-glass-hover: rgba(255, 255, 255, 0.06);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-accent: rgba(196, 163, 90, 0.15);
+  --border-accent-hover: rgba(196, 163, 90, 0.3);
+  --white: #f0ece6;
+  --white-dim: rgba(240, 236, 230, 0.75);
+  --accent: #c9a84c;
+  --accent-glow: rgba(201, 168, 76, 0.25);
+  --accent-dim: #a68b3a;
+  --red: #e05a4f;
+  --red-dim: rgba(224, 90, 79, 0.1);
+  --red-glow: rgba(224, 90, 79, 0.2);
+  --green: #5cb563;
+  --green-dim: rgba(92, 181, 99, 0.12);
+  --grey: #9a9690;
+  --grey-dim: #656158;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 100px;
+  --shadow-card: 0 1px 2px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.2), 0 12px 40px rgba(0,0,0,0.15);
+  --shadow-glow: 0 0 30px var(--accent-glow);
+  --shadow-elevated: 0 2px 4px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.3), 0 24px 64px rgba(0,0,0,0.2);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--bg-deep);
+  background-image:
+    /* Primary warm gradient wash — top */
+    radial-gradient(ellipse 120% 60% at 30% 0%, rgba(201, 168, 76, 0.045) 0%, transparent 55%),
+    /* Secondary warm — bottom right */
+    radial-gradient(ellipse 80% 50% at 85% 85%, rgba(201, 168, 76, 0.035) 0%, transparent 50%),
+    /* Red danger accent — mid right */
+    radial-gradient(ellipse 50% 40% at 90% 35%, rgba(224, 90, 79, 0.03) 0%, transparent 50%),
+    /* Deep blue cool contrast — bottom left */
+    radial-gradient(ellipse 60% 45% at 10% 75%, rgba(60, 80, 140, 0.025) 0%, transparent 50%),
+    /* Center subtle lift */
+    radial-gradient(ellipse 100% 30% at 50% 50%, rgba(255,255,255,0.008) 0%, transparent 50%),
+    /* Base gradient — slight warm-to-cool shift */
+    linear-gradient(175deg, #08080c 0%, #050508 30%, #060609 60%, #07070b 100%);
+  color: var(--white);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ─── COMPLEX AMBIENT BACKGROUND SYSTEM ─── */
+
+/* Layer 1: Large floating gradient orbs (fixed, parallax feel) */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    /* Gold orb — top left, prominent */
+    radial-gradient(circle 500px at 15% 8%, rgba(201, 168, 76, 0.06) 0%, rgba(201, 168, 76, 0.02) 40%, transparent 70%),
+    /* Red accent orb — right side */
+    radial-gradient(circle 400px at 88% 25%, rgba(224, 90, 79, 0.035) 0%, rgba(224, 90, 79, 0.01) 40%, transparent 65%),
+    /* Cool blue orb — bottom left */
+    radial-gradient(circle 450px at 8% 80%, rgba(80, 100, 160, 0.025) 0%, transparent 60%),
+    /* Gold orb — bottom right, secondary */
+    radial-gradient(circle 350px at 75% 90%, rgba(201, 168, 76, 0.04) 0%, transparent 55%),
+    /* Warm center bloom */
+    radial-gradient(circle 600px at 50% 45%, rgba(201, 168, 76, 0.015) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Layer 2: Noise texture — more visible for tactile feel */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Layer 3: Grid mesh overlay — subtle geometric structure */
+.grid-mesh {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; z-index: 0;
+  opacity: 0.025;
+  background-image:
+    /* Vertical lines */
+    repeating-linear-gradient(90deg, rgba(201,168,76,0.15) 0px, rgba(201,168,76,0.15) 1px, transparent 1px, transparent 120px),
+    /* Horizontal lines */
+    repeating-linear-gradient(0deg, rgba(201,168,76,0.1) 0px, rgba(201,168,76,0.1) 1px, transparent 1px, transparent 120px);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 80%);
+}
+
+/* Layer 4: Diagonal accent lines — architectural feel */
+.diag-lines {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; z-index: 0;
+  opacity: 0.012;
+  background-image:
+    repeating-linear-gradient(
+      -30deg,
+      transparent,
+      transparent 200px,
+      rgba(201,168,76,0.2) 200px,
+      rgba(201,168,76,0.2) 201px
+    );
+  mask-image: linear-gradient(180deg, black 0%, transparent 50%, black 100%);
+  -webkit-mask-image: linear-gradient(180deg, black 0%, transparent 50%, black 100%);
+}
+
+/* Layer 5: Radial vignette — draw focus to center content */
+.vignette {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; z-index: 0;
+  background: radial-gradient(ellipse 75% 65% at 50% 45%, transparent 0%, rgba(5,5,8,0.4) 100%);
+}
+
+.container { max-width: 1340px; margin: 0 auto; padding: 0 2.5rem; position: relative; z-index: 1; }
+
+/* ─── SCROLL PROGRESS INDICATOR ─── */
+.scroll-progress {
+  position: fixed; top: 0; right: 16px; bottom: 0; width: 3px; z-index: 98;
+  pointer-events: none;
+}
+.scroll-progress-track {
+  position: absolute; top: 80px; bottom: 80px; width: 100%;
+  background: rgba(255,255,255,0.03); border-radius: 3px;
+}
+.scroll-progress-fill {
+  position: absolute; top: 0; left: 0; width: 100%; height: 0%;
+  background: linear-gradient(180deg, var(--accent), rgba(201,168,76,0.3));
+  border-radius: 3px; transition: height 0.15s ease-out;
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+.scroll-progress-dot {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--accent); border: 2px solid var(--bg-deep);
+  box-shadow: 0 0 10px var(--accent-glow);
+  transition: top 0.15s ease-out;
+}
+@media (max-width: 900px) {
+  .scroll-progress { right: 6px; width: 2px; }
+  .scroll-progress-dot { width: 6px; height: 6px; border-width: 1.5px; }
+  .scroll-progress-track { top: 70px; bottom: 70px; }
+}
+@media (max-width: 600px) {
+  .scroll-progress { right: 4px; width: 2px; }
+  .scroll-progress-dot { width: 5px; height: 5px; border-width: 1px; }
+  .scroll-progress-track { top: 60px; bottom: 60px; }
+  .scroll-progress-fill { box-shadow: 0 0 4px var(--accent-glow); }
+}
+
+.label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.label::before {
+  content: ''; width: 16px; height: 1px; background: var(--accent); display: block;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; } 50% { opacity: 0.35; }
+}
+@keyframes countPulse {
+  0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes orbDrift {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.06); }
+  50% { box-shadow: 0 0 35px var(--accent-glow), 0 0 60px rgba(201,168,76,0.1), inset 0 1px 0 rgba(255,255,255,0.06); }
+}
+
+.anim-up { opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.anim-up-d1 { animation-delay: 0.12s; }
+.anim-up-d2 { animation-delay: 0.24s; }
+.anim-up-d3 { animation-delay: 0.38s; }
+.anim-up-d4 { animation-delay: 0.52s; }
+
+/* ─── GLASS CARD SYSTEM ─── */
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-smooth);
+}
+.glass-card:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-elevated), 0 0 0 1px var(--border-accent);
+  transform: translateY(-3px);
+}
+
+/* ─── NAV — Floating pill glassmorphism ─── */
+nav {
+  position: fixed; top: 12px; left: 50%; transform: translateX(-50%); z-index: 100;
+  width: calc(100% - 40px); max-width: 1240px;
+  padding: 0.7rem 1rem 0.7rem 1.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(12, 12, 18, 0.6);
+  backdrop-filter: blur(30px) saturate(1.4);
+  -webkit-backdrop-filter: blur(30px) saturate(1.4);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-pill);
+  box-shadow:
+    0 4px 24px rgba(0,0,0,0.3),
+    0 1px 0 rgba(255,255,255,0.03) inset,
+    0 -1px 0 rgba(0,0,0,0.2) inset;
+}
+.nav-logo {
+  font-family: var(--font-serif); font-size: 1.4rem;
+  color: var(--accent); text-decoration: none; letter-spacing: -0.02em;
+}
+.nav-links { display: flex; gap: 1.5rem; align-items: center; }
+.nav-links a {
+  color: var(--grey); text-decoration: none; font-size: 0.78rem;
+  font-weight: 500; letter-spacing: 0.02em; transition: color var(--transition-smooth);
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%) !important;
+  color: var(--bg-deep) !important;
+  padding: 0.5rem 1.4rem; border-radius: var(--radius-pill); font-weight: 700 !important;
+  font-size: 0.76rem !important; letter-spacing: 0.02em !important;
+  transition: all var(--transition-smooth) !important;
+  box-shadow: 0 2px 10px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.2);
+  border: none !important;
+}
+.nav-cta:hover {
+  box-shadow: 0 4px 24px var(--accent-glow), 0 0 50px rgba(201,168,76,0.12) !important;
+  transform: translateY(-1px) scale(1.02) !important;
+}
+
+/* ─── ALERT TICKER BAR ─── */
+.alert-bar {
+  margin-top: 72px; background: var(--red-dim);
+  border-bottom: 1px solid rgba(224, 90, 79, 0.12);
+  padding: 0.55rem 0; overflow: hidden;
+  position: relative; z-index: 1;
+}
+.alert-track {
+  display: flex; align-items: center; gap: 3rem;
+  animation: tickerScroll 35s linear infinite;
+  width: max-content;
+}
+.alert-item {
+  display: flex; align-items: center; gap: 0.6rem;
+  white-space: nowrap; flex-shrink: 0;
+}
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.alert-dot {
+  width: 6px; height: 6px; background: var(--red); border-radius: 50%;
+  animation: pulse 2s ease infinite; flex-shrink: 0;
+  box-shadow: 0 0 8px var(--red-glow);
+}
+.alert-text {
+  font-size: 0.72rem; font-weight: 600; color: var(--red);
+  letter-spacing: 0.06em; white-space: nowrap;
+}
+.alert-sep {
+  width: 4px; height: 4px; border-radius: 50%; background: rgba(224,90,79,0.3); flex-shrink: 0;
+}
+
+/* ─── PREMIUM PILL BUTTONS ─── */
+.btn-primary {
+  background: linear-gradient(160deg, #dbbf5c 0%, var(--accent) 40%, var(--accent-dim) 100%);
+  color: var(--bg-deep); padding: 0.9rem 2.4rem;
+  border-radius: var(--radius-pill); text-decoration: none; font-weight: 700;
+  font-size: 0.88rem; letter-spacing: 0.01em; display: inline-block;
+  transition: all var(--transition-smooth);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.25) inset,
+    0 -1px 0 rgba(0,0,0,0.15) inset,
+    0 2px 8px var(--accent-glow),
+    0 8px 24px rgba(201,168,76,0.15),
+    0 0 0 1px rgba(201,168,76,0.3);
+  position: relative; overflow: hidden;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+}
+.btn-primary::before {
+  content: ''; position: absolute; top: 0; left: -150%; width: 60%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.25), transparent);
+  transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: skewX(-20deg);
+}
+.btn-primary:hover::before { left: 150%; }
+.btn-primary::after {
+  content: ''; position: absolute; inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 50%);
+  pointer-events: none;
+}
+.btn-primary:hover {
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.3) inset,
+    0 -1px 0 rgba(0,0,0,0.15) inset,
+    0 4px 16px var(--accent-glow),
+    0 12px 40px rgba(201,168,76,0.2),
+    0 0 80px rgba(201,168,76,0.1),
+    0 0 0 1px rgba(201,168,76,0.4);
+  transform: translateY(-2px) scale(1.01);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.04); color: var(--white); padding: 0.9rem 2.4rem;
+  border-radius: var(--radius-pill); text-decoration: none; font-weight: 600;
+  font-size: 0.88rem; display: inline-block;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all var(--transition-smooth);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.04) inset,
+    0 2px 8px rgba(0,0,0,0.2);
+  position: relative;
+}
+.btn-secondary::after {
+  content: ''; position: absolute; inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+.btn-secondary:hover {
+  border-color: rgba(201,168,76,0.2);
+  background: rgba(255,255,255,0.07);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.06) inset,
+    0 4px 16px rgba(0,0,0,0.25),
+    0 0 30px rgba(201,168,76,0.06),
+    0 0 0 1px rgba(201,168,76,0.1);
+  transform: translateY(-2px);
+}
+
+/* ─── HERO ─── */
+.hero {
+  padding: 8rem 2.5rem 4.5rem; position: relative; overflow: hidden;
+  min-height: 95vh; display: flex; align-items: center; justify-content: center;
+}
+/* Hero gradient orbs — larger, more dramatic */
+.hero::before {
+  content: ''; position: absolute; width: 900px; height: 900px;
+  top: -300px; left: -300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.04) 35%, transparent 65%);
+  animation: orbDrift 18s ease-in-out infinite; pointer-events: none;
+  filter: blur(60px);
+}
+.hero::after {
+  content: ''; position: absolute; width: 700px; height: 700px;
+  bottom: -250px; right: -200px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(224,90,79,0.09) 0%, rgba(224,90,79,0.02) 35%, transparent 60%);
+  animation: orbDrift 22s ease-in-out infinite reverse; pointer-events: none;
+  filter: blur(50px);
+}
+/* Additional center glow orb */
+.hero-glow {
+  position: absolute; width: 600px; height: 600px;
+  top: 15%; left: 50%; transform: translateX(-50%); border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 55%);
+  animation: orbDrift 28s ease-in-out infinite; pointer-events: none;
+  filter: blur(80px); z-index: 0;
+}
+/* Horizontal accent line behind headline */
+.hero-accent-line {
+  position: absolute; top: 50%; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 5%, rgba(201,168,76,0.06) 25%, rgba(201,168,76,0.1) 50%, rgba(201,168,76,0.06) 75%, transparent 95%);
+  pointer-events: none; z-index: 0;
+}
+/* Vertical accent lines framing the content */
+.hero-v-lines {
+  position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 900px; pointer-events: none; z-index: 0;
+}
+.hero-v-lines::before, .hero-v-lines::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(180deg, transparent 10%, rgba(201,168,76,0.04) 35%, rgba(201,168,76,0.07) 50%, rgba(201,168,76,0.04) 65%, transparent 90%);
+}
+.hero-v-lines::before { left: 0; }
+.hero-v-lines::after { right: 0; }
+/* Corner accents */
+.hero-corner {
+  position: absolute; width: 40px; height: 40px; pointer-events: none; z-index: 0; opacity: 0.15;
+}
+.hero-corner::before, .hero-corner::after {
+  content: ''; position: absolute; background: var(--accent);
+}
+.hero-corner--tl { top: 2rem; left: 3rem; }
+.hero-corner--tl::before { top: 0; left: 0; width: 20px; height: 1px; }
+.hero-corner--tl::after { top: 0; left: 0; width: 1px; height: 20px; }
+.hero-corner--tr { top: 2rem; right: 3rem; }
+.hero-corner--tr::before { top: 0; right: 0; width: 20px; height: 1px; }
+.hero-corner--tr::after { top: 0; right: 0; width: 1px; height: 20px; }
+.hero-corner--bl { bottom: 2rem; left: 3rem; }
+.hero-corner--bl::before { bottom: 0; left: 0; width: 20px; height: 1px; }
+.hero-corner--bl::after { bottom: 0; left: 0; width: 1px; height: 20px; }
+.hero-corner--br { bottom: 2rem; right: 3rem; }
+.hero-corner--br::before { bottom: 0; right: 0; width: 20px; height: 1px; }
+.hero-corner--br::after { bottom: 0; right: 0; width: 1px; height: 20px; }
+
+.hero-inner { max-width: 960px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: rgba(224,90,79,0.08);
+  border: 1px solid rgba(224,90,79,0.15);
+  padding: 0.45rem 1.4rem; border-radius: var(--radius-pill); margin-bottom: 2rem;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 12px rgba(224,90,79,0.06), inset 0 1px 0 rgba(255,255,255,0.03);
+}
+.hero-tag span {
+  font-size: 0.72rem; font-weight: 700; color: var(--red);
+  letter-spacing: 0.07em; text-transform: uppercase;
+}
+h1 {
+  font-family: var(--font-serif); font-size: clamp(2.8rem, 5.8vw, 5rem);
+  line-height: 1.04; font-weight: 400; color: var(--white);
+  margin-bottom: 1.8rem; letter-spacing: -0.03em;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.3);
+}
+h1 em {
+  font-style: italic; color: var(--accent);
+  text-shadow: 0 0 60px rgba(201,168,76,0.2);
+}
+.hero-sub {
+  font-size: 1.05rem; line-height: 1.75; color: var(--grey);
+  max-width: 760px; margin: 0 auto 1.8rem; font-weight: 400;
+}
+.hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.hero-urgency {
+  margin-top: 1.5rem; padding: 0.7rem 1.6rem;
+  background: rgba(12, 12, 18, 0.5);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: var(--radius-pill); display: inline-flex; align-items: center; gap: 0.8rem;
+  animation: glowPulse 4s ease infinite;
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2), 0 0 30px rgba(201,168,76,0.05), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.hero-urgency-text { font-size: 0.8rem; color: var(--grey); line-height: 1.4; }
+.hero-urgency-text strong { color: var(--accent); font-weight: 700; }
+/* Mini stat pills below hero urgency */
+.hero-stats {
+  display: flex; justify-content: center; gap: 0.5rem; margin-top: 2rem; flex-wrap: wrap;
+}
+.hero-stat {
+  background: var(--bg-glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-pill);
+  padding: 0.55rem 1.4rem; display: flex; align-items: center; gap: 0.6rem;
+  transition: all var(--transition-smooth);
+}
+.hero-stat:hover { border-color: var(--border-accent); }
+.hero-stat-num {
+  font-family: var(--font-serif); font-size: 1.2rem; color: var(--red); line-height: 1;
+  text-shadow: 0 0 12px var(--red-glow);
+}
+.hero-stat-label { font-size: 0.82rem; color: var(--grey); line-height: 1.3; }
+
+/* ─── SOCIAL PROOF BAR ─── */
+.social-proof-bar {
+  padding: 1.5rem 2rem; display: flex; justify-content: center; align-items: center;
+  gap: 3rem; flex-wrap: wrap; position: relative; z-index: 1;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.sp-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--grey); }
+.sp-icon { font-size: 0.9rem; color: var(--accent); }
+.sp-item strong { color: var(--white); font-weight: 700; }
+
+/* ─── STATS BAR ─── */
+.stats-bar {
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 3.5rem 2rem; position: relative; z-index: 1;
+  background: var(--bg-glass);
+}
+.stats-inner {
+  max-width: 1140px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center;
+}
+.stat-num {
+  font-family: var(--font-serif); font-size: 2.6rem; color: var(--red);
+  line-height: 1; margin-bottom: 0.5rem;
+  text-shadow: 0 0 30px var(--red-glow);
+}
+.stat-label { font-size: 0.76rem; color: var(--grey); line-height: 1.45; }
+
+/* ─── SECTIONS ─── */
+section {
+  padding: 5.5rem 2.5rem; position: relative; z-index: 1;
+}
+.section-dark {
+  background:
+    linear-gradient(180deg, rgba(201,168,76,0.008) 0%, rgba(255,255,255,0.015) 50%, rgba(201,168,76,0.008) 100%);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+}
+.section-dark::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255,255,255,0.01) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+h2 {
+  font-family: var(--font-serif); font-size: clamp(2.1rem, 4vw, 3.2rem);
+  line-height: 1.12; font-weight: 400; margin-bottom: 1.5rem; letter-spacing: -0.025em;
+}
+h2 em { font-style: italic; color: var(--accent); }
+h3 { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 1rem; letter-spacing: -0.01em; }
+
+.section-text { font-size: 1.02rem; line-height: 1.78; color: var(--grey); max-width: 820px; font-weight: 400; }
+
+/* ─── CRISIS / PROBLEM ─── */
+.crisis-section { position: relative; overflow: hidden; }
+.crisis-section::before {
+  content: ''; position: absolute; left: 0; top: 0; width: 2px; height: 100%;
+  background: linear-gradient(to bottom, var(--red), transparent);
+}
+/* Floating orb behind crisis section */
+.crisis-section::after {
+  content: ''; position: absolute; width: 400px; height: 400px;
+  top: 50%; right: -150px; transform: translateY(-50%); border-radius: 50%;
+  background: radial-gradient(circle, rgba(224,90,79,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+.crisis-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  align-items: start; max-width: 1280px; margin: 0 auto;
+}
+.crisis-right {
+  background: var(--bg-glass); backdrop-filter: blur(16px);
+  border: 1px solid rgba(224,90,79,0.1); border-radius: var(--radius-lg);
+  padding: 2.5rem; box-shadow: var(--shadow-card);
+  transition: all var(--transition-smooth);
+}
+.crisis-right:hover {
+  border-color: rgba(224,90,79,0.2);
+  box-shadow: var(--shadow-elevated), 0 0 30px rgba(224,90,79,0.05);
+}
+.crisis-right h3 { color: var(--red); font-size: 1.3rem; margin-bottom: 1.5rem; }
+.crisis-right p { font-size: 0.93rem; color: var(--grey); line-height: 1.7; margin-bottom: 1.2rem; }
+.crisis-right p:last-child { margin-bottom: 0; }
+.crisis-right em { color: var(--white); font-style: normal; font-weight: 600; }
+
+/* ─── CONVERT SECTION ─── */
+.convert-section { text-align: center; }
+.convert-inner { max-width: 880px; margin: 0 auto; }
+.convert-quote {
+  font-family: var(--font-serif); font-size: clamp(1.3rem, 2.8vw, 1.75rem);
+  font-style: italic; color: var(--accent); line-height: 1.4; padding: 2.5rem 0;
+  border-top: 1px solid var(--border-accent); border-bottom: 1px solid var(--border-accent);
+  margin-bottom: 2.5rem;
+  text-shadow: 0 0 40px rgba(201,168,76,0.1);
+}
+
+/* ─── OPPORTUNITY SECTION ─── */
+.opp-section { position: relative; overflow: hidden; }
+.opp-section::after {
+  content: ''; position: absolute; width: 500px; height: 500px;
+  top: 20%; right: -200px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(92,181,99,0.03) 0%, transparent 70%);
+  pointer-events: none; animation: orbDrift 30s ease-in-out infinite;
+}
+.opp-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  align-items: start; max-width: 1280px; margin: 0 auto; position: relative; z-index: 1;
+}
+.opp-right-cards { display: flex; flex-direction: column; gap: 1rem; }
+.opp-card {
+  background: var(--bg-glass); backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+  padding: 1.5rem 1.8rem; transition: all var(--transition-smooth);
+  position: relative; overflow: hidden;
+}
+.opp-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  opacity: 0; transition: opacity var(--transition-smooth);
+}
+.opp-card:hover { background: var(--bg-glass-hover); border-color: var(--border-accent); transform: translateY(-2px); box-shadow: var(--shadow-card); }
+.opp-card:hover::before { opacity: 1; }
+.opp-card-label {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; display: block;
+}
+.opp-card h4 { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 400; color: var(--white); margin-bottom: 0.4rem; }
+.opp-card p { font-size: 0.84rem; color: var(--grey); line-height: 1.6; }
+.opp-highlight-box {
+  background: var(--bg-glass); border: 1px solid var(--border-accent);
+  border-radius: var(--radius-md); padding: 1.8rem 2rem; margin-top: 2rem;
+  backdrop-filter: blur(10px);
+}
+.opp-highlight-box p { font-size: 0.9rem; color: var(--grey); line-height: 1.7; }
+.opp-highlight-box strong { color: var(--white); font-weight: 600; }
+
+/* ─── FIRE-SALE FEATURE CARD ─── */
+.firesale-card-wrap {
+  padding: 0 2rem; position: relative; z-index: 1;
+  margin-top: -3rem; margin-bottom: -3rem;
+}
+.firesale-card {
+  max-width: 1140px; margin: 0 auto;
+  background: rgba(12, 12, 18, 0.5);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: var(--radius-lg);
+  padding: 3rem 3.5rem;
+  display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: center;
+  box-shadow:
+    0 4px 24px rgba(0,0,0,0.3),
+    0 12px 48px rgba(0,0,0,0.15),
+    0 0 0 1px rgba(255,255,255,0.03) inset,
+    0 0 60px rgba(201,168,76,0.04);
+  position: relative; overflow: hidden;
+}
+.firesale-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 10%, rgba(201,168,76,0.25) 50%, transparent 90%);
+}
+.firesale-card::after {
+  content: ''; position: absolute; top: -150px; right: -150px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.firesale-left { position: relative; z-index: 1; }
+.firesale-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.12);
+  padding: 0.3rem 1rem; border-radius: var(--radius-pill);
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem;
+}
+.firesale-badge-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 6px var(--accent-glow);
+}
+.firesale-left h3 {
+  font-family: var(--font-serif); font-size: 1.8rem; font-weight: 400;
+  color: var(--white); margin-bottom: 0.8rem; line-height: 1.2; letter-spacing: -0.02em;
+}
+.firesale-left h3 em { color: var(--accent); font-style: italic; }
+.firesale-left > p {
+  font-size: 0.92rem; color: var(--grey); line-height: 1.7;
+}
+.firesale-right { position: relative; z-index: 1; }
+.firesale-channels {
+  display: flex; flex-direction: column; gap: 0.7rem;
+}
+.firesale-channel {
+  display: flex; align-items: flex-start; gap: 0.9rem;
+  padding: 0.8rem 1rem; border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+  transition: all var(--transition-smooth);
+}
+.firesale-channel:hover {
+  background: rgba(255,255,255,0.04); border-color: rgba(201,168,76,0.1);
+  transform: translateX(4px);
+}
+.firesale-channel-icon {
+  width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+  background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.08);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent); font-size: 0.85rem; margin-top: 1px;
+}
+.firesale-channel-text h5 {
+  font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600;
+  color: var(--white); margin-bottom: 0.15rem;
+}
+.firesale-channel-text p {
+  font-size: 0.75rem; color: var(--grey); line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .firesale-card { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.8rem 1.5rem; }
+  .firesale-card-wrap { margin-top: -1.5rem; margin-bottom: -1.5rem; padding: 0 1.5rem; }
+  .firesale-left h3 { font-size: 1.5rem; }
+}
+
+/* ─── SOLUTION + TACTICS ─── */
+.solution-header { text-align: center; max-width: 860px; margin: 0 auto 3rem; }
+.solution-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+  max-width: 1280px; margin: 0 auto;
+}
+.sol-card {
+  background: var(--bg-glass); backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem; transition: all var(--transition-smooth);
+  position: relative; overflow: hidden;
+}
+.sol-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0; transition: opacity var(--transition-smooth);
+}
+.sol-card:hover::after { opacity: 1; }
+.sol-card:hover { background: var(--bg-glass-hover); border-color: var(--border-accent); transform: translateY(-4px); box-shadow: var(--shadow-elevated); }
+.sol-num { font-family: var(--font-serif); font-size: 3.5rem; color: rgba(201,168,76,0.08); line-height: 1; margin-bottom: 1rem; }
+.sol-card h3 { font-size: 1.25rem; color: var(--white); margin-bottom: 0.7rem; }
+.sol-card p { font-size: 0.88rem; color: var(--grey); line-height: 1.65; }
+
+.tactics-divider {
+  display: flex; align-items: center; gap: 1.2rem; margin: 3.5rem auto 2rem; max-width: 1240px;
+}
+.tactics-divider span {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--accent); white-space: nowrap;
+}
+.tactics-divider::before, .tactics-divider::after {
+  content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--border-accent), transparent);
+}
+.tactics-intro { max-width: 880px; margin: 0 auto 2rem; text-align: center; }
+.tactics-intro p { font-size: 1rem; color: var(--grey); line-height: 1.75; }
+
+.tactics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; max-width: 1280px; margin: 0 auto; }
+.tactic-block {
+  background: var(--bg-glass); backdrop-filter: blur(14px);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+  padding: 2rem; transition: all var(--transition-smooth);
+}
+.tactic-block:hover { background: var(--bg-glass-hover); border-color: var(--border-accent); transform: translateY(-2px); box-shadow: var(--shadow-card); }
+.tactic-block:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: calc(50% - 0.6rem); justify-self: center; }
+.tactic-icon {
+  width: 42px; height: 42px; border-radius: var(--radius-sm);
+  background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent); margin-bottom: 1.2rem;
+}
+.tactic-block h4 { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 400; color: var(--white); margin-bottom: 0.7rem; }
+.tactic-body { font-size: 0.86rem; color: var(--grey); line-height: 1.7; }
+.tactic-body strong { color: var(--white); font-weight: 600; }
+.tactic-body .kw {
+  display: inline; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 6px; padding: 0.12rem 0.5rem; font-size: 0.8rem; color: var(--accent);
+  font-family: var(--font-sans); white-space: nowrap;
+}
+
+/* ─── SYLLABUS PILL SWITCHER ─── */
+.syllabus-tabs {
+  max-width: 900px; margin: 0 auto;
+}
+.syl-pill-toggle {
+  display: flex; justify-content: center; margin-bottom: 3rem;
+}
+.syl-pill-track {
+  display: flex; position: relative;
+  background: var(--bg-glass); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill); padding: 4px;
+  backdrop-filter: blur(16px); box-shadow: var(--shadow-card);
+}
+.syl-pill-btn {
+  position: relative; z-index: 2; padding: 0.65rem 2rem;
+  font-size: 0.82rem; font-weight: 600; color: var(--grey);
+  cursor: pointer; border: none; background: none;
+  font-family: var(--font-sans); letter-spacing: 0.01em;
+  transition: color var(--transition-smooth);
+  white-space: nowrap;
+}
+.syl-pill-btn.active { color: var(--bg-deep); }
+.syl-pill-btn:not(.active):hover { color: var(--white); }
+.syl-pill-slider {
+  position: absolute; top: 4px; left: 4px; height: calc(100% - 8px);
+  width: calc(50% - 4px); border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--accent), var(--accent-dim));
+  box-shadow: 0 2px 12px var(--accent-glow);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+.syl-pill-slider.right {
+  transform: translateX(100%);
+}
+.syl-tab-panel {
+  display: none;
+  animation: sylFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.syl-tab-panel.active { display: block; }
+@keyframes sylFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.syllabus-col h3 { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-accent); text-align: center; }
+.syl-module { border-bottom: 1px solid var(--border-subtle); }
+.syl-module-header {
+  padding: 1rem 0; cursor: pointer; display: flex;
+  justify-content: space-between; align-items: center; transition: color var(--transition-smooth);
+}
+.syl-module-header:hover .syl-module-name { color: var(--accent); }
+.syl-module-title { display: flex; align-items: baseline; gap: 0.7rem; }
+.syl-module-num { font-family: var(--font-serif); font-size: 0.82rem; color: var(--accent); min-width: 24px; }
+.syl-module-name { font-size: 0.9rem; font-weight: 600; color: var(--white); transition: color var(--transition-smooth); }
+.syl-module-toggle {
+  font-family: var(--font-serif); font-size: 1.1rem; color: var(--accent);
+  transition: transform var(--transition-smooth); flex-shrink: 0;
+  width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; background: rgba(201,168,76,0.06);
+}
+.syl-module.open .syl-module-toggle { transform: rotate(45deg); background: rgba(201,168,76,0.12); }
+.syl-module-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.syl-module.open .syl-module-body { max-height: 600px; }
+.syl-sub-list { padding: 0 0 1rem 2.4rem; list-style: none; }
+.syl-sub-item {
+  padding: 0.35rem 0; font-size: 0.8rem; color: var(--grey);
+  line-height: 1.55; position: relative; padding-left: 1rem;
+}
+.syl-sub-item::before { content: '—'; position: absolute; left: 0; color: rgba(201,168,76,0.25); }
+.syl-guide-label {
+  display: inline-block; background: rgba(201,168,76,0.06);
+  border: 1px solid rgba(201,168,76,0.1); border-radius: 6px;
+  padding: 0.15rem 0.6rem; font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+/* ─── COMPARISON TABLE ─── */
+.compare-section { text-align: center; }
+.compare-table {
+  max-width: 800px; margin: 2rem auto 0; border-radius: var(--radius-lg); overflow: hidden;
+  border: 1px solid var(--border-subtle); background: var(--bg-glass);
+  backdrop-filter: blur(16px); box-shadow: var(--shadow-card);
+}
+.compare-row { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; font-size: 0.84rem; }
+.compare-row.header {
+  background: rgba(201,168,76,0.05); font-weight: 700; font-size: 0.72rem;
+  letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent);
+}
+.compare-row:not(.header) { border-top: 1px solid var(--border-subtle); transition: background var(--transition-smooth); }
+.compare-row:not(.header):hover { background: rgba(255,255,255,0.02); }
+.compare-cell { padding: 1rem 1.2rem; display: flex; align-items: center; color: var(--grey); }
+.compare-cell:first-child { color: var(--white); font-weight: 500; justify-content: flex-start; }
+.compare-cell:not(:first-child) { justify-content: center; }
+.compare-check { color: var(--accent); font-weight: 700; font-size: 1.1rem; }
+.compare-cross { color: var(--grey-dim); font-size: 1rem; }
+.compare-note { max-width: 700px; margin: 1.5rem auto 0; font-size: 0.8rem; color: var(--grey); font-style: italic; text-align: center; }
+
+/* ─── PRICING ─── */
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+  max-width: 1240px; margin: 2.5rem auto 0;
+}
+.price-card {
+  background: var(--bg-glass); backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem; display: flex; flex-direction: column;
+  transition: all var(--transition-smooth); box-shadow: var(--shadow-card);
+}
+.price-card:hover { border-color: var(--border-accent); transform: translateY(-3px); box-shadow: var(--shadow-elevated); }
+.price-card.featured {
+  border-color: var(--accent); background: rgba(201,168,76,0.03); position: relative;
+  box-shadow: var(--shadow-elevated), 0 0 40px var(--accent-glow);
+}
+.featured-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(135deg, #dbbf5c, var(--accent), var(--accent-dim)); color: var(--bg-deep);
+  font-size: 0.58rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.35rem 1.2rem; border-radius: var(--radius-pill);
+  box-shadow: 0 2px 12px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.2);
+  white-space: nowrap;
+}
+.price-card h3 { font-size: 1.3rem; margin-bottom: 0.4rem; }
+.price-desc { font-size: 0.82rem; color: var(--grey); margin-bottom: 1.5rem; line-height: 1.5; }
+.price-row { display: flex; align-items: baseline; gap: 0.8rem; margin-bottom: 0.3rem; flex-wrap: wrap; }
+.price-amount { font-family: var(--font-serif); font-size: 2.8rem; color: var(--white); line-height: 1; }
+.price-amount span { font-family: var(--font-sans); font-size: 0.82rem; color: var(--grey); font-weight: 400; }
+.price-original { font-family: var(--font-serif); font-size: 1.5rem; color: var(--grey-dim); text-decoration: line-through; line-height: 1; }
+.price-savings {
+  display: inline-block; background: rgba(92,181,99,0.08); color: var(--green);
+  font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em;
+  padding: 0.25rem 0.8rem; border-radius: var(--radius-pill); text-transform: uppercase;
+  border: 1px solid rgba(92,181,99,0.12);
+  box-shadow: 0 0 12px rgba(92,181,99,0.06);
+}
+.price-note { font-size: 0.76rem; color: var(--grey); margin-bottom: 2rem; }
+.price-features { list-style: none; margin-bottom: 2rem; flex-grow: 1; }
+.price-features li {
+  font-size: 0.82rem; color: var(--grey); padding: 0.45rem 0;
+  padding-left: 1.4rem; position: relative; line-height: 1.5;
+}
+.price-features li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; }
+.price-card .btn-primary, .price-card .btn-secondary { text-align: center; width: 100%; }
+
+/* ─── COUNTDOWN ─── */
+.countdown-strip {
+  background: var(--bg-glass); border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg); padding: 1.5rem 2rem; text-align: center;
+  max-width: 680px; margin: 2.5rem auto 0; backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-card);
+}
+.countdown-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;
+}
+.countdown-timer { display: flex; justify-content: center; gap: 2rem; margin-bottom: 0.6rem; }
+.cd-unit { display: flex; flex-direction: column; align-items: center; }
+.cd-num {
+  font-family: var(--font-serif); font-size: 2.2rem; color: var(--white);
+  line-height: 1; min-width: 48px; text-shadow: 0 0 20px var(--accent-glow);
+}
+.cd-label { font-size: 0.6rem; color: var(--grey); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 0.3rem; }
+.countdown-note { font-size: 0.76rem; color: var(--grey); }
+
+/* ─── TESTIMONIALS ─── */
+.testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; max-width: 1000px; margin: 2rem auto 0; }
+.test-card {
+  background: var(--bg-glass); backdrop-filter: blur(14px);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+  padding: 2rem; transition: all var(--transition-smooth);
+}
+.test-card:hover { border-color: var(--border-accent); box-shadow: var(--shadow-card); transform: translateY(-2px); }
+.test-stars { color: var(--accent); font-size: 0.82rem; letter-spacing: 0.12em; margin-bottom: 1rem; text-shadow: 0 0 12px var(--accent-glow); }
+.test-text { font-size: 0.9rem; color: var(--grey); line-height: 1.65; margin-bottom: 1.2rem; font-style: italic; }
+.test-author { font-size: 0.8rem; color: var(--white); font-weight: 600; }
+.test-context { font-size: 0.72rem; color: var(--grey); font-weight: 400; margin-left: 0.2rem; }
+
+/* ─── HOW IT WORKS ─── */
+.steps-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1000px; margin: 2rem auto 0; }
+.step-item { text-align: center; }
+.step-num {
+  font-family: var(--font-serif); font-size: 3.5rem;
+  background: linear-gradient(180deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.02) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1; margin-bottom: 1rem;
+}
+.step-item h4 { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 400; color: var(--white); margin-bottom: 0.4rem; }
+.step-item p { font-size: 0.8rem; color: var(--grey); line-height: 1.5; }
+
+/* ─── FAQ ─── */
+.faq-list { max-width: 750px; margin: 2rem auto 0; }
+.faq-item { border-bottom: 1px solid var(--border-subtle); }
+.faq-q {
+  padding: 1.3rem 0; cursor: pointer; display: flex; justify-content: space-between;
+  align-items: center; font-size: 0.92rem; font-weight: 600; color: var(--white);
+  transition: color var(--transition-smooth);
+}
+.faq-q:hover { color: var(--accent); }
+.faq-toggle {
+  font-family: var(--font-serif); font-size: 1.2rem; color: var(--accent);
+  transition: transform var(--transition-smooth); flex-shrink: 0; margin-left: 1rem;
+  width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; background: rgba(201,168,76,0.06);
+}
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.faq-a-inner { padding-bottom: 1.5rem; font-size: 0.88rem; color: var(--grey); line-height: 1.7; }
+.faq-item.open .faq-a { max-height: 300px; }
+.faq-item.open .faq-toggle { transform: rotate(45deg); background: rgba(201,168,76,0.12); }
+
+/* ─── FINAL CTA ─── */
+.final-cta {
+  text-align: center; padding: 5.5rem 2.5rem 6rem; position: relative; overflow: hidden;
+}
+.final-cta::before {
+  content: ''; position: absolute; width: 600px; height: 400px;
+  bottom: -150px; left: 50%; transform: translateX(-50%); border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.final-cta::after {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 40%; height: 1px;
+  background: linear-gradient(to right, transparent, var(--accent), transparent);
+}
+
+/* ─── STICKY BAR — Floating pill ─── */
+.sticky-bar-outer {
+  position: fixed; bottom: 16px; left: 50%; z-index: 99;
+  transform: translateX(-50%) translateY(140px);
+  max-width: 720px; width: calc(100% - 40px);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex; flex-direction: column; align-items: center;
+}
+.sticky-bar-outer.visible { transform: translateX(-50%) translateY(0); }
+
+.sticky-bar-badge {
+  background: rgba(12, 12, 18, 0.82);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(201,168,76,0.18);
+  border-bottom: none;
+  border-radius: 20px 20px 0 0;
+  padding: 0.5rem 1.6rem;
+  display: flex; align-items: center; gap: 1rem;
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.2), 0 0 20px rgba(201,168,76,0.04);
+}
+.sticky-bar-badge-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 6px var(--accent-glow);
+  animation: pulse 2s ease infinite;
+}
+.sticky-bar-badge-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent);
+}
+.sticky-bar-badge-timer {
+  font-family: var(--font-body); font-size: 1rem; color: var(--white);
+  font-weight: 700; letter-spacing: 0.05em;
+  text-shadow: 0 0 14px var(--accent-glow);
+  padding: 0.1rem 0.7rem; border-left: 1px solid rgba(201,168,76,0.15);
+  border-right: 1px solid rgba(201,168,76,0.15);
+}
+.sticky-bar-badge-discount {
+  background: var(--green-dim); color: var(--green);
+  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.06em;
+  padding: 0.2rem 0.6rem; border-radius: var(--radius-pill);
+  border: 1px solid rgba(92,181,99,0.12);
+}
+
+.sticky-bar {
+  width: 100%;
+  background: rgba(12, 12, 18, 0.65);
+  backdrop-filter: blur(30px) saturate(1.4);
+  -webkit-backdrop-filter: blur(30px) saturate(1.4);
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: var(--radius-pill);
+  padding: 0.6rem 0.7rem 0.6rem 1.5rem;
+  display: flex; justify-content: space-between;
+  align-items: center; gap: 1rem;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.4),
+    0 2px 8px rgba(0,0,0,0.3),
+    0 0 0 1px rgba(255,255,255,0.04) inset,
+    0 0 40px rgba(201,168,76,0.06);
+}
+.sticky-bar-text { font-size: 0.78rem; color: var(--grey); white-space: nowrap; }
+.sticky-bar-text strong { color: var(--accent); }
+.sticky-bar-secondary {
+  font-size: 0.72rem; color: var(--grey); text-decoration: none;
+  white-space: nowrap; transition: color var(--transition-smooth);
+  border-left: 1px solid rgba(255,255,255,0.06); padding-left: 1rem;
+}
+.sticky-bar-secondary:hover { color: var(--accent); }
+.sticky-bar-price { display: flex; align-items: baseline; gap: 0.5rem; white-space: nowrap; }
+.sticky-bar-price .old { color: var(--grey-dim); text-decoration: line-through; font-size: 0.78rem; }
+.sticky-bar-price .new { color: var(--white); font-weight: 800; font-size: 0.95rem; }
+.sticky-bar .btn-primary { padding: 0.5rem 1.5rem; font-size: 0.78rem; flex-shrink: 0; }
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 3rem 2rem 5.5rem; text-align: center;
+  border-top: 1px solid var(--border-subtle); position: relative; z-index: 1;
+}
+.footer-logo { font-family: var(--font-serif); font-size: 1.3rem; color: var(--accent); margin-bottom: 0.5rem; }
+footer p { font-size: 0.73rem; color: var(--grey); }
+footer a { color: var(--accent); text-decoration: none; transition: color var(--transition-smooth); }
+footer a:hover { color: var(--white); }
+
+/* ─── MOBILE MENU ─── */
+.nav-menu-btn {
+  display: none; cursor: pointer; width: 36px; height: 36px;
+  border-radius: 50%; background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  align-items: center; justify-content: center;
+  transition: all var(--transition-smooth); flex-shrink: 0;
+}
+.nav-menu-btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(201,168,76,0.15); }
+.nav-menu-btn svg line { transition: all 0.3s ease; transform-origin: center; }
+
+.mobile-menu {
+  display: none; position: fixed; top: 68px; left: 50%; transform: translateX(-50%);
+  width: calc(100% - 40px); max-width: 1240px;
+  background: rgba(12, 12, 18, 0.88); backdrop-filter: blur(30px) saturate(1.4);
+  -webkit-backdrop-filter: blur(30px) saturate(1.4);
+  border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius-lg);
+  padding: 0.8rem; z-index: 99;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.03) inset;
+  flex-direction: column; gap: 0.15rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block; padding: 0.75rem 1.2rem; color: var(--grey); text-decoration: none;
+  font-size: 0.88rem; font-weight: 500; border-radius: var(--radius-sm);
+  transition: all var(--transition-smooth);
+}
+.mobile-menu a:hover, .mobile-menu a:active { color: var(--white); background: rgba(255,255,255,0.04); }
+.mobile-menu .mob-cta {
+  margin-top: 0.3rem; text-align: center;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%);
+  color: var(--bg-deep); font-weight: 700; border-radius: var(--radius-pill);
+  padding: 0.75rem 1.2rem;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .crisis-grid, .opp-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .solution-cards, .tactics-grid { grid-template-columns: 1fr; }
+  .tactic-block:last-child:nth-child(odd) { max-width: 100%; grid-column: auto; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .steps-row { grid-template-columns: repeat(2, 1fr); }
+  .compare-row { grid-template-columns: 1.5fr 1fr 1fr 1fr; font-size: 0.76rem; }
+  .compare-cell { padding: 0.7rem 0.6rem; }
+  .nav-links { display: none !important; }
+  .nav-menu-btn { display: flex; }
+  nav { width: calc(100% - 24px); padding: 0.6rem 0.8rem 0.6rem 1.2rem; }
+  .hero { padding: 6rem 1.5rem 3.5rem; min-height: auto; }
+  .hero-glow, .hero-accent-line, .hero-v-lines { display: none; }
+  .hero-corner { display: none; }
+  .hero-stats { gap: 0.4rem; margin-top: 1.5rem; }
+  .hero-stat { padding: 0.45rem 1.1rem; }
+  .hero-stat-num { font-size: 1rem; }
+  .hero-stat-label { font-size: 0.72rem; }
+  .crisis-section::before { display: none; }
+  .sticky-bar-text { display: none; }
+  .sticky-bar-secondary { display: none; }
+  .sticky-bar { padding: 0.5rem 0.6rem 0.5rem 1.2rem; gap: 0.8rem; }
+  .sticky-bar-outer { max-width: calc(100% - 24px); bottom: 12px; }
+  .sticky-bar-badge { padding: 0.3rem 1rem; gap: 0.6rem; }
+  .sticky-bar-badge-label { font-size: 0.6rem; }
+  .sticky-bar-badge-timer { font-size: 0.88rem; }
+  .sticky-bar-badge-discount { font-size: 0.52rem; }
+  section { padding: 4rem 1.5rem; }
+  .hero::before, .hero::after { display: none; }
+  .grid-mesh { opacity: 0.012; }
+  .diag-lines { display: none; }
+  /* Fire-sale card */
+  .firesale-card { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.8rem 1.5rem; }
+  .firesale-card-wrap { margin-top: -1.5rem; margin-bottom: -1.5rem; padding: 0 1.5rem; }
+  .firesale-left h3 { font-size: 1.5rem; }
+  /* Hero urgency pill */
+  .hero-urgency { padding: 0.6rem 1.2rem; gap: 0.6rem; }
+  .hero-urgency-text { font-size: 0.72rem; }
+  /* Convert quote */
+  .convert-quote { font-size: 1.2rem; padding: 2rem 0; }
+  /* Opp highlight box */
+  .opp-highlight-box { padding: 1.4rem 1.2rem; }
+  .opp-highlight-box p { font-size: 0.84rem; }
+  /* Syllabus */
+  .syl-sub-list { padding: 0 0 1rem 1.6rem; }
+  .syl-sub-item { font-size: 0.78rem; padding-left: 0.8rem; }
+  .syl-module-name { font-size: 0.85rem; }
+  .syl-guide-label { font-size: 0.58rem; }
+  .syl-pill-toggle { padding: 0.15rem; }
+  .syl-pill-btn { font-size: 0.72rem; padding: 0.5rem 1rem; }
+  /* Product mockups */
+  .product-mockups { gap: 1.5rem; }
+  .product-mockups > div { width: 160px; }
+  /* Section headers */
+  h2 { font-size: clamp(1.7rem, 5vw, 2.4rem); }
+  .section-text { font-size: 0.95rem; }
+  /* Pricing */
+  .pricing-grid { margin-top: 2.5rem; }
+  .price-card { padding: 2rem 1.5rem; }
+  .countdown-strip { padding: 1.2rem 1.5rem; }
+  /* Skyline */
+  .skyline-bg { opacity: 0.03; }
+}
+
+@media (max-width: 600px) {
+  .stats-inner { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .stat-num { font-size: 2rem; }
+  .stat-label { font-size: 0.7rem; }
+  .steps-row { grid-template-columns: 1fr; }
+  .alert-text { font-size: 0.6rem; letter-spacing: 0.03em; }
+  .alert-bar { padding: 0.5rem 1rem; }
+  section { padding: 3rem 1rem; }
+  .container { padding: 0 0.8rem; }
+  .compare-row { grid-template-columns: 1fr; }
+  .compare-row.header { display: none; }
+  .compare-cell { justify-content: flex-start !important; padding: 0.5rem 1.2rem; }
+  .social-proof-bar { gap: 1rem; padding: 1rem; }
+  .sp-item { font-size: 0.75rem; }
+  /* Hero mobile polish */
+  h1 { font-size: 2rem; margin-bottom: 1.2rem; }
+  .hero-stats { gap: 0.4rem; margin-top: 1.2rem; }
+  .hero-stat { padding: 0.55rem 1.2rem; gap: 0.5rem; }
+  .hero-stat-num { font-size: 1.1rem; }
+  .hero-stat-label { font-size: 0.82rem; }
+  .hero-sub { font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .hero-sub {
+    background: rgba(255,255,255,0.025);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 1.4rem 1.3rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.03);
+    text-align: left;
+  }
+  .hero-tag { padding: 0.35rem 1rem; margin-bottom: 1.8rem; }
+  .hero-tag span { font-size: 0.62rem; }
+  .hero-ctas { flex-direction: column; align-items: center; gap: 0.8rem; }
+  .hero-ctas .btn-primary, .hero-ctas .btn-secondary { width: 100%; max-width: 320px; text-align: center; }
+  .hero-urgency { flex-direction: column; text-align: center; gap: 0.4rem; padding: 0.7rem 1rem; }
+  .hero-urgency .alert-dot { display: none; }
+  /* Crisis section */
+  .crisis-right { padding: 1.5rem 1.2rem; }
+  .crisis-right h3 { font-size: 1.1rem; }
+  .crisis-right p { font-size: 0.85rem; }
+  /* Fire-sale card */
+  .firesale-card { padding: 1.5rem 1.2rem; }
+  .firesale-card-wrap { padding: 0 1rem; }
+  .firesale-left h3 { font-size: 1.3rem; }
+  .firesale-badge { font-size: 0.55rem; padding: 0.25rem 0.8rem; }
+  .firesale-channel { padding: 0.6rem 0.8rem; gap: 0.7rem; }
+  .firesale-channel-icon { width: 28px; height: 28px; border-radius: 6px; }
+  .firesale-channel-text h5 { font-size: 0.78rem; }
+  .firesale-channel-text p { font-size: 0.7rem; }
+  /* Inline testimonials */
+  .inline-test-wrap { padding: 1rem !important; }
+  .inline-test { padding: 1.2rem 1rem !important; gap: 0.8rem !important; }
+  .inline-test-quote { font-size: 0.82rem !important; }
+  /* Opp cards */
+  .opp-card { padding: 1.2rem 1.2rem; }
+  .opp-card h4 { font-size: 1rem; }
+  .opp-card p { font-size: 0.8rem; }
+  /* Solution cards */
+  .sol-card { padding: 2rem 1.5rem; }
+  .sol-num { font-size: 2.5rem; }
+  /* Tactic blocks */
+  .tactic-block { padding: 1.5rem 1.2rem; }
+  .tactic-block h4 { font-size: 1.05rem; }
+  .tactic-body { font-size: 0.82rem; }
+  .tactic-body .kw { font-size: 0.75rem; padding: 0.08rem 0.35rem; }
+  /* Pricing mobile */
+  .pricing-grid { max-width: 100%; }
+  .price-amount { font-size: 2.4rem; }
+  .price-original { font-size: 1.3rem; }
+  .featured-badge { font-size: 0.52rem; padding: 0.3rem 1rem; }
+  /* Countdown */
+  .countdown-strip { padding: 1rem; }
+  .cd-num { font-size: 1.8rem; }
+  .countdown-timer { gap: 1.5rem; }
+  /* FAQ */
+  .faq-q { font-size: 0.85rem; padding: 1.1rem 0; }
+  .faq-a-inner { font-size: 0.82rem; }
+  .faq-toggle { width: 22px; height: 22px; font-size: 1rem; }
+  /* Syllabus */
+  .syl-sub-list { padding-left: 1.2rem; }
+  .syl-sub-item { font-size: 0.75rem; line-height: 1.5; }
+  .syl-pill-btn { font-size: 0.68rem; padding: 0.45rem 0.8rem; }
+  /* Sticky bar */
+  .sticky-bar-outer { bottom: 10px; width: calc(100% - 20px); }
+  .sticky-bar { padding: 0.45rem 0.5rem 0.45rem 1rem; }
+  .sticky-bar-price .old { font-size: 0.72rem; }
+  .sticky-bar-price .new { font-size: 0.85rem; }
+  .sticky-bar .btn-primary { padding: 0.45rem 1.2rem; font-size: 0.72rem; }
+  /* Footer */
+  footer { padding: 2.5rem 1rem 5rem; }
+  /* Product mockups */
+  .product-mockups > div { width: 140px; }
+  /* Convert quote */
+  .convert-quote { font-size: 1.05rem; }
+  /* Mobile menu */
+  .mobile-menu { top: 60px; width: calc(100% - 24px); }
+  .mobile-menu a { font-size: 0.82rem; padding: 0.7rem 1rem; }
+  /* Credibility section */
+  .section-text { font-size: 0.9rem; line-height: 1.7; }
+}
+/* ─── DUBAI SKYLINE BACKGROUND ─── */
+.skyline-bg {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.06;
+}
+.skyline-bg svg { width: 100%; height: auto; display: block; }
+
+/* ─── SECTION DECORATIVE SVGs ─── */
+.section-divider-svg {
+  display: block; width: 100%; height: 40px; position: relative; z-index: 1;
+  overflow: hidden;
+}
+.section-divider-svg svg { width: 100%; height: 100%; }
+
+/* ─── SOL-CARD ICONS ─── */
+.sol-icon {
+  width: 48px; height: 48px; margin-bottom: 1.2rem;
+  border-radius: var(--radius-sm); background: rgba(201,168,76,0.06);
+  border: 1px solid rgba(201,168,76,0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent); transition: all var(--transition-smooth);
+}
+.sol-card:hover .sol-icon {
+  background: rgba(201,168,76,0.1); border-color: rgba(201,168,76,0.2);
+  box-shadow: 0 0 20px rgba(201,168,76,0.1);
+}
+
+/* ─── STEP ICONS ─── */
+.step-icon {
+  width: 52px; height: 52px; margin: 0 auto 1rem;
+  border-radius: 50%; background: rgba(201,168,76,0.04);
+  border: 1px solid rgba(201,168,76,0.08);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent); transition: all var(--transition-smooth);
+}
+.step-item:hover .step-icon {
+  background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.15);
+  transform: scale(1.05);
+}
+
+/* ─── HERO DECORATIVE LINES ─── */
+.hero-lines {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+.hero-lines svg { width: 100%; height: 100%; opacity: 0.04; }
+
+@media (max-width: 900px) {
+  .skyline-bg { opacity: 0.035; }
+  .hero-lines { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── BACKGROUND LAYERS ─── -->
+<div class="grid-mesh" aria-hidden="true"></div>
+<div class="diag-lines" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<!-- ─── SCROLL PROGRESS ─── -->
+<div class="scroll-progress" aria-hidden="true">
+  <div class="scroll-progress-track">
+    <div class="scroll-progress-fill" id="scrollFill"></div>
+    <div class="scroll-progress-dot" id="scrollDot"></div>
+  </div>
+</div>
+
+<!-- ─── DUBAI SKYLINE SVG BACKGROUND ─── -->
+<div class="skyline-bg">
+<svg viewBox="0 0 1920 700" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+  <defs>
+    <!-- Burj Khalifa gradient — most prominent -->
+    <linearGradient id="burjGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(201,168,76,0.45)"/>
+      <stop offset="25%" stop-color="rgba(201,168,76,0.3)"/>
+      <stop offset="60%" stop-color="rgba(201,168,76,0.12)"/>
+      <stop offset="100%" stop-color="rgba(201,168,76,0.02)"/>
+    </linearGradient>
+    <!-- Spire glow -->
+    <linearGradient id="spireGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(201,168,76,0.7)"/>
+      <stop offset="50%" stop-color="rgba(201,168,76,0.3)"/>
+      <stop offset="100%" stop-color="rgba(201,168,76,0.05)"/>
+    </linearGradient>
+    <!-- Supporting buildings -->
+    <linearGradient id="towerGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(201,168,76,0.2)"/>
+      <stop offset="50%" stop-color="rgba(201,168,76,0.08)"/>
+      <stop offset="100%" stop-color="rgba(201,168,76,0.01)"/>
+    </linearGradient>
+    <!-- Distant buildings -->
+    <linearGradient id="distantGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(201,168,76,0.1)"/>
+      <stop offset="60%" stop-color="rgba(201,168,76,0.04)"/>
+      <stop offset="100%" stop-color="rgba(201,168,76,0.005)"/>
+    </linearGradient>
+    <!-- Glow filter for Burj Khalifa -->
+    <filter id="bkGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Subtle glow for spire -->
+    <filter id="spireFilter" x="-100%" y="-20%" width="300%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+    </filter>
+    <!-- Ground reflection gradient -->
+    <linearGradient id="groundRef" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(201,168,76,0.06)"/>
+      <stop offset="100%" stop-color="rgba(201,168,76,0)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Ground plane -->
+  <rect x="0" y="680" width="1920" height="20" fill="url(#groundRef)"/>
+  <line x1="0" y1="682" x2="1920" y2="682" stroke="rgba(201,168,76,0.08)" stroke-width="0.8"/>
+
+  <!-- ═══ BURJ KHALIFA — Center, dominant ═══ -->
+  <!-- Spire glow aura -->
+  <line x1="960" y1="10" x2="960" y2="80" stroke="rgba(201,168,76,0.15)" stroke-width="8" filter="url(#spireFilter)"/>
+  <!-- Spire -->
+  <line x1="960" y1="10" x2="960" y2="80" stroke="url(#spireGlow)" stroke-width="2"/>
+  <!-- Main tower body — detailed stepped silhouette -->
+  <path d="
+    M960 80
+    L963 80 L963 120
+    L966 120 L966 180
+    L968 180 L968 220
+    L970 220 L970 280
+    L972 280 L972 330
+    L974 330 L974 400
+    L976 400 L976 460
+    L978 460 L978 520
+    L980 520 L980 560
+    L983 560 L983 600
+    L986 600 L986 640
+    L990 640 L990 680
+    L930 680
+    L930 640 L934 640
+    L934 600 L937 600
+    L937 560 L940 560
+    L940 520 L942 520
+    L942 460 L944 460
+    L944 400 L946 400
+    L946 330 L948 330
+    L948 280 L950 280
+    L950 220 L952 220
+    L952 180 L954 180
+    L954 120 L957 120
+    L957 80 Z
+  " fill="url(#burjGrad)" filter="url(#bkGlow)"/>
+  <!-- Setback detail lines -->
+  <line x1="946" y1="330" x2="974" y2="330" stroke="rgba(201,168,76,0.12)" stroke-width="0.5"/>
+  <line x1="944" y1="400" x2="976" y2="400" stroke="rgba(201,168,76,0.1)" stroke-width="0.5"/>
+  <line x1="942" y1="460" x2="978" y2="460" stroke="rgba(201,168,76,0.08)" stroke-width="0.5"/>
+  <line x1="940" y1="520" x2="980" y2="520" stroke="rgba(201,168,76,0.06)" stroke-width="0.5"/>
+  <line x1="937" y1="560" x2="983" y2="560" stroke="rgba(201,168,76,0.05)" stroke-width="0.5"/>
+  <line x1="934" y1="600" x2="986" y2="600" stroke="rgba(201,168,76,0.04)" stroke-width="0.5"/>
+  <!-- Window grid lines (vertical) -->
+  <line x1="955" y1="120" x2="953" y2="680" stroke="rgba(201,168,76,0.04)" stroke-width="0.3"/>
+  <line x1="965" y1="120" x2="967" y2="680" stroke="rgba(201,168,76,0.04)" stroke-width="0.3"/>
+  <!-- Center spine -->
+  <line x1="960" y1="80" x2="960" y2="680" stroke="rgba(201,168,76,0.06)" stroke-width="0.4"/>
+
+  <!-- ═══ BURJ AL ARAB — Left ═══ -->
+  <path d="M380 350 Q400 220 420 350 L425 680 L375 680 Z" fill="url(#towerGrad)" opacity="0.8"/>
+  <path d="M383 355 Q400 240 417 355" stroke="rgba(201,168,76,0.1)" stroke-width="0.6" fill="none"/>
+  <path d="M386 365 Q400 260 414 365" stroke="rgba(201,168,76,0.06)" stroke-width="0.4" fill="none"/>
+  <!-- Helipad platform -->
+  <line x1="388" y1="350" x2="412" y2="350" stroke="rgba(201,168,76,0.12)" stroke-width="0.5"/>
+
+  <!-- ═══ EMIRATES TOWERS — Right of center ═══ -->
+  <path d="M1200 240 L1210 240 L1216 680 L1194 680 Z" fill="url(#towerGrad)" opacity="0.7"/>
+  <line x1="1205" y1="230" x2="1205" y2="240" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+  <path d="M1240 280 L1249 280 L1254 680 L1235 680 Z" fill="url(#towerGrad)" opacity="0.6"/>
+  <line x1="1244" y1="270" x2="1244" y2="280" stroke="rgba(201,168,76,0.12)" stroke-width="0.8"/>
+
+  <!-- ═══ CAYAN TOWER (twisted) — Left of Khalifa ═══ -->
+  <path d="M800 340 Q805 320 810 340 L816 680 L794 680 Z" fill="url(#towerGrad)" opacity="0.5"/>
+  <line x1="800" y1="360" x2="816" y2="355" stroke="rgba(201,168,76,0.04)" stroke-width="0.3"/>
+  <line x1="800" y1="420" x2="816" y2="410" stroke="rgba(201,168,76,0.03)" stroke-width="0.3"/>
+  <line x1="800" y1="480" x2="816" y2="465" stroke="rgba(201,168,76,0.025)" stroke-width="0.3"/>
+
+  <!-- ═══ ADDRESS DOWNTOWN — Near Khalifa ═══ -->
+  <rect x="1020" y="380" width="20" height="300" rx="1" fill="url(#towerGrad)" opacity="0.55"/>
+  <line x1="1030" y1="375" x2="1030" y2="380" stroke="rgba(201,168,76,0.1)" stroke-width="0.8"/>
+
+  <!-- ═══ MARINA CLUSTER — Left ═══ -->
+  <rect x="580" y="420" width="14" height="260" rx="1.5" fill="url(#distantGrad)" opacity="0.7"/>
+  <rect x="600" y="440" width="12" height="240" rx="1.5" fill="url(#distantGrad)" opacity="0.6"/>
+  <rect x="618" y="400" width="16" height="280" rx="1.5" fill="url(#distantGrad)" opacity="0.75"/>
+  <rect x="640" y="450" width="11" height="230" rx="1.5" fill="url(#distantGrad)" opacity="0.5"/>
+  <rect x="657" y="430" width="13" height="250" rx="1.5" fill="url(#distantGrad)" opacity="0.6"/>
+  <rect x="676" y="460" width="10" height="220" rx="1.5" fill="url(#distantGrad)" opacity="0.45"/>
+
+  <!-- ═══ BUSINESS BAY CLUSTER — Right ═══ -->
+  <rect x="1100" y="400" width="16" height="280" rx="1.5" fill="url(#distantGrad)" opacity="0.65"/>
+  <rect x="1122" y="430" width="13" height="250" rx="1.5" fill="url(#distantGrad)" opacity="0.55"/>
+  <rect x="1140" y="380" width="18" height="300" rx="1.5" fill="url(#distantGrad)" opacity="0.7"/>
+  <rect x="1164" y="440" width="14" height="240" rx="1.5" fill="url(#distantGrad)" opacity="0.5"/>
+  <rect x="1184" y="420" width="11" height="260" rx="1.5" fill="url(#distantGrad)" opacity="0.55"/>
+
+  <!-- ═══ JBR CLUSTER — Far left ═══ -->
+  <rect x="460" y="470" width="13" height="210" rx="1" fill="url(#distantGrad)" opacity="0.5"/>
+  <rect x="480" y="450" width="15" height="230" rx="1" fill="url(#distantGrad)" opacity="0.55"/>
+  <rect x="502" y="480" width="11" height="200" rx="1" fill="url(#distantGrad)" opacity="0.4"/>
+  <rect x="520" y="460" width="14" height="220" rx="1" fill="url(#distantGrad)" opacity="0.48"/>
+
+  <!-- ═══ DISTANT RIGHT ═══ -->
+  <rect x="1300" y="480" width="14" height="200" rx="1" fill="url(#distantGrad)" opacity="0.4"/>
+  <rect x="1330" y="460" width="16" height="220" rx="1" fill="url(#distantGrad)" opacity="0.45"/>
+  <rect x="1360" y="490" width="12" height="190" rx="1" fill="url(#distantGrad)" opacity="0.35"/>
+  <rect x="1390" y="500" width="15" height="180" rx="1" fill="url(#distantGrad)" opacity="0.38"/>
+  <rect x="1420" y="510" width="11" height="170" rx="1" fill="url(#distantGrad)" opacity="0.3"/>
+  <rect x="1460" y="520" width="14" height="160" rx="1" fill="url(#distantGrad)" opacity="0.28"/>
+  <rect x="1500" y="540" width="12" height="140" rx="1" fill="url(#distantGrad)" opacity="0.22"/>
+  <rect x="1540" y="550" width="16" height="130" rx="1" fill="url(#distantGrad)" opacity="0.2"/>
+  <rect x="1590" y="560" width="13" height="120" rx="1" fill="url(#distantGrad)" opacity="0.18"/>
+  <rect x="1640" y="575" width="14" height="105" rx="1" fill="url(#distantGrad)" opacity="0.15"/>
+  <rect x="1690" y="590" width="11" height="90" rx="1" fill="url(#distantGrad)" opacity="0.12"/>
+
+  <!-- ═══ DISTANT LEFT ═══ -->
+  <rect x="140" y="520" width="14" height="160" rx="1" fill="url(#distantGrad)" opacity="0.3"/>
+  <rect x="170" y="500" width="12" height="180" rx="1" fill="url(#distantGrad)" opacity="0.35"/>
+  <rect x="195" y="530" width="16" height="150" rx="1" fill="url(#distantGrad)" opacity="0.28"/>
+  <rect x="230" y="510" width="13" height="170" rx="1" fill="url(#distantGrad)" opacity="0.32"/>
+  <rect x="260" y="540" width="15" height="140" rx="1" fill="url(#distantGrad)" opacity="0.25"/>
+  <rect x="290" y="525" width="11" height="155" rx="1" fill="url(#distantGrad)" opacity="0.28"/>
+  <rect x="320" y="550" width="14" height="130" rx="1" fill="url(#distantGrad)" opacity="0.22"/>
+
+  <!-- ═══ THE PALM — subtle ═══ -->
+  <ellipse cx="500" cy="670" rx="70" ry="8" fill="rgba(201,168,76,0.03)"/>
+  <line x1="500" y1="640" x2="500" y2="668" stroke="rgba(201,168,76,0.05)" stroke-width="1"/>
+  <line x1="485" y1="648" x2="500" y2="662" stroke="rgba(201,168,76,0.03)" stroke-width="0.6"/>
+  <line x1="515" y1="648" x2="500" y2="662" stroke="rgba(201,168,76,0.03)" stroke-width="0.6"/>
+  <line x1="475" y1="656" x2="500" y2="665" stroke="rgba(201,168,76,0.02)" stroke-width="0.5"/>
+  <line x1="525" y1="656" x2="500" y2="665" stroke="rgba(201,168,76,0.02)" stroke-width="0.5"/>
+
+  <!-- Ground reflection lines -->
+  <line x1="0" y1="686" x2="1920" y2="686" stroke="rgba(201,168,76,0.04)" stroke-width="0.5"/>
+  <line x1="0" y1="693" x2="1920" y2="693" stroke="rgba(201,168,76,0.02)" stroke-width="0.5"/>
+  <line x1="0" y1="698" x2="1920" y2="698" stroke="rgba(201,168,76,0.01)" stroke-width="0.5"/>
+</svg>
+</div>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="#" class="nav-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="vertical-align: -3px; margin-right: 6px;"><path d="M2 20h20M5 20V8l7-5 7 5v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 20v-5h6v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Premier Blueprint</a>
+  <div class="nav-links">
+    <a href="#problem">The Market</a>
+    <a href="#solution">The System</a>
+    <a href="#contents">What's Inside</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="#pricing" class="nav-cta">Get Access</a>
+  </div>
+  <div class="nav-menu-btn" id="menuBtn" onclick="document.getElementById('mobileMenu').classList.toggle('open'); this.classList.toggle('open');">
+    <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+  </div>
+</nav>
+
+<!-- ─── MOBILE MENU DROPDOWN ─── -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#problem" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('menuBtn').classList.remove('open');">The Market</a>
+  <a href="#solution" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('menuBtn').classList.remove('open');">The System</a>
+  <a href="#contents" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('menuBtn').classList.remove('open');">What's Inside</a>
+  <a href="#pricing" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('menuBtn').classList.remove('open');">Pricing</a>
+  <a href="#faq" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('menuBtn').classList.remove('open');">FAQ</a>
+  <a href="#pricing" class="mob-cta" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('menuBtn').classList.remove('open');">Get Access — 745 AED</a>
+</div>
+
+<!-- ─── ALERT TICKER ─── -->
+<div class="alert-bar">
+  <div class="alert-track">
+    <div class="alert-item"><div class="alert-dot"></div><span class="alert-text">IRANIAN MISSILE STRIKES HAVE HIT DUBAI</span></div>
+    <div class="alert-sep"></div>
+    <div class="alert-item"><span class="alert-text">BUYER POOL CONTRACTING</span></div>
+    <div class="alert-sep"></div>
+    <div class="alert-item"><span class="alert-text">EXPAT DEPARTURES ACCELERATING</span></div>
+    <div class="alert-sep"></div>
+    <div class="alert-item"><span class="alert-text">OFF-PLAN PIPELINE FROZEN</span></div>
+    <div class="alert-sep"></div>
+    <div class="alert-item"><span class="alert-text">DEVELOPER STOCKS DOWN 5%</span></div>
+    <div class="alert-sep"></div>
+    <div class="alert-item"><span class="alert-text">FITCH FORECASTS 15% CORRECTION</span></div>
+    <div class="alert-sep"></div>
+    <div class="alert-item"><span class="alert-text">DXB AIRPORT DAMAGED</span></div>
+    <div class="alert-sep"></div>
+    <div class="alert-item"><span class="alert-text">FIRE-SALE INVENTORY SURFACING</span></div>
+    <div class="alert-sep"></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="alert-item"><div class="alert-dot"></div><span class="alert-text">IRANIAN MISSILE STRIKES HAVE HIT DUBAI</span></div>
+    <div class="alert-sep"></div>
+    <div class="alert-item"><span class="alert-text">BUYER POOL CONTRACTING</span></div>
+    <div class="alert-sep"></div>
+    <div class="alert-item"><span class="alert-text">EXPAT DEPARTURES ACCELERATING</span></div>
+    <div class="alert-sep"></div>
+    <div class="alert-item"><span class="alert-text">OFF-PLAN PIPELINE FROZEN</span></div>
+    <div class="alert-sep"></div>
+    <div class="alert-item"><span class="alert-text">DEVELOPER STOCKS DOWN 5%</span></div>
+    <div class="alert-sep"></div>
+    <div class="alert-item"><span class="alert-text">FITCH FORECASTS 15% CORRECTION</span></div>
+    <div class="alert-sep"></div>
+    <div class="alert-item"><span class="alert-text">DXB AIRPORT DAMAGED</span></div>
+    <div class="alert-sep"></div>
+    <div class="alert-item"><span class="alert-text">FIRE-SALE INVENTORY SURFACING</span></div>
+    <div class="alert-sep"></div>
+  </div>
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <!-- Geometric grid lines -->
+  <div class="hero-lines">
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <line x1="0" y1="200" x2="1200" y2="200" stroke="rgba(201,168,76,1)" stroke-width="0.5"/>
+      <line x1="0" y1="400" x2="1200" y2="400" stroke="rgba(201,168,76,1)" stroke-width="0.5"/>
+      <line x1="0" y1="600" x2="1200" y2="600" stroke="rgba(201,168,76,1)" stroke-width="0.5"/>
+      <line x1="300" y1="0" x2="300" y2="800" stroke="rgba(201,168,76,1)" stroke-width="0.5"/>
+      <line x1="600" y1="0" x2="600" y2="800" stroke="rgba(201,168,76,1)" stroke-width="0.5"/>
+      <line x1="900" y1="0" x2="900" y2="800" stroke="rgba(201,168,76,1)" stroke-width="0.5"/>
+      <rect x="297" y="197" width="6" height="6" rx="1" fill="rgba(201,168,76,0.3)" transform="rotate(45 300 200)"/>
+      <rect x="597" y="397" width="6" height="6" rx="1" fill="rgba(201,168,76,0.3)" transform="rotate(45 600 400)"/>
+      <rect x="897" y="197" width="6" height="6" rx="1" fill="rgba(201,168,76,0.3)" transform="rotate(45 900 200)"/>
+      <rect x="297" y="597" width="6" height="6" rx="1" fill="rgba(201,168,76,0.2)" transform="rotate(45 300 600)"/>
+      <rect x="897" y="597" width="6" height="6" rx="1" fill="rgba(201,168,76,0.2)" transform="rotate(45 900 600)"/>
+    </svg>
+  </div>
+
+  <!-- New visual layers -->
+  <div class="hero-glow"></div>
+  <div class="hero-accent-line"></div>
+  <div class="hero-v-lines"></div>
+  <div class="hero-corner hero-corner--tl"></div>
+  <div class="hero-corner hero-corner--tr"></div>
+  <div class="hero-corner hero-corner--bl"></div>
+  <div class="hero-corner hero-corner--br"></div>
+
+  <div class="hero-inner">
+    <div class="hero-tag anim-up">
+      <div class="alert-dot"></div>
+      <span>Dubai Real Estate — Crisis Operating Mode</span>
+    </div>
+
+    <h1 class="anim-up anim-up-d1">Fewer Buyers. Fewer Renters.<br>Fewer Chances to <em>Get It Wrong.</em></h1>
+
+    <p class="hero-sub anim-up anim-up-d2">Iranian missiles just redrew the Dubai real estate market. Expatriates are leaving — breaking leases, cancelling relocations, pulling out of deals. The pool of active buyers and tenants is the smallest it's been in years — and every conversation you have with the ones who remain is the highest-stakes interaction of your career.</p>
+
+    <p class="hero-sub anim-up anim-up-d3" style="font-size: 0.93rem; color: var(--accent); font-weight: 500; max-width: 740px;">But a new wave of discount-hunting investors is entering the market — and fire-sale inventory is surfacing for the first time in years. The agents who know how to source below-market stock, find these buyers, and speak their language will close more in the next 90 days than most agents will close all year.</p>
+
+    <div class="hero-ctas anim-up anim-up-d4">
+      <a href="#pricing" class="btn-primary">Get the Complete System — <span id="hero-price">745 AED</span></a>
+      <a href="#solution" class="btn-secondary">See What's Inside</a>
+    </div>
+
+    <div class="hero-urgency anim-up anim-up-d4">
+      <div class="alert-dot" style="background: var(--accent); box-shadow: 0 0 8px var(--accent-glow);"></div>
+      <div class="hero-urgency-text"><strong>50% off ends in <span id="hero-cd">21:59:59</span></strong> — then it goes back to 1,490 AED</div>
+    </div>
+
+    <!-- Mini stat pills -->
+    <div class="hero-stats anim-up anim-up-d4">
+      <div class="hero-stat"><span class="hero-stat-num">−15%</span><span class="hero-stat-label">Fitch forecast</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">65%</span><span class="hero-stat-label">Off-plan frozen</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">100k+</span><span class="hero-stat-label">Units delivering</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">−5%</span><span class="hero-stat-label">Dev stocks</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOCIAL PROOF BAR ─── -->
+<div class="social-proof-bar">
+  <div class="sp-item"><span class="sp-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span> <strong>117 agents</strong> purchased this week</div>
+</div>
+
+<!-- ─── PROBLEM / CRISIS ─── -->
+<section class="section-dark crisis-section" id="problem">
+  <div class="container">
+    <div class="crisis-grid">
+      <div class="crisis-left">
+        <span class="label">The Reality — March 2026</span>
+        <h2>The Market You Knew<br>Is <em>Gone</em></h2>
+        <p class="section-text" style="margin-bottom: 1.5rem;">A week ago, Iranian missiles struck Dubai. The Burj Al Arab caught fire from drone debris. The Fairmont on Palm Jumeirah was hit. Jebel Ali port took damage. Dubai International Airport shut down. The financial market closed for two days.</p>
+        <p class="section-text" style="margin-bottom: 1.5rem;">The aura of untouchability that drew 81,000 millionaires, that fuelled five straight years of luxury price growth, that made 500 properties sell for over $10 million last year — that aura cracked alongside the skyline.</p>
+        <p class="section-text">And the pool of active, confident, ready-to-transact buyers just contracted harder and faster than at any point since 2008.</p>
+      </div>
+      <div class="crisis-right">
+        <h3>What's Happening on the Ground</h3>
+        <p><em>Buyers who are still active are harder to close.</em> They're asking questions that didn't exist two weeks ago. "Is Dubai safe?" "What happens to resale if this escalates?" Every one of those questions kills the deal if you fumble it.</p>
+        <p><em>The referral pipeline is frozen.</em> The casual "my friend is thinking about Dubai" lead? That friend just watched missile interceptions over the Marina on live television. That referral isn't coming.</p>
+        <p><em>Tenants are breaking leases and landlords are panicking.</em> Buildings that had 0% vacancy six months ago are seeing early terminations. Rental agents who relied on a steady flow of corporate relocations have watched that pipeline evaporate overnight.</p>
+        <p><em>Portal leads are declining in quality and quantity.</em> The tourist-investor who browses Bayut after a holiday isn't browsing — because they're not holidaying in Dubai right now. Rental search volume from inbound expats has dropped with it.</p>
+        <p><em>There aren't ten more leads behind the one you just lost.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── THE CONVERSION ARGUMENT ─── -->
+<section class="convert-section">
+  <div class="convert-inner container">
+    <span class="label">The Shift</span>
+    <h2>This Is No Longer<br>a <em>Volume</em> Market</h2>
+    <p class="section-text" style="margin: 0 auto 2rem;">When Dubai was booming, unstructured agents could survive on volume. Enough leads flowed through portals, referrals, and social channels that even a mediocre conversion rate produced deals. The Iran conflict ended that overnight. The buyers didn't just get harder to find — they got harder to close.</p>
+    <p class="section-text" style="margin: 0 auto 2.5rem;">The agent who responds to "Is Dubai still safe to invest in?" or "Should I still relocate?" with confidence, structure, and composure will close. The agent who hesitates, hedges, or scrambles for an answer will lose that buyer or tenant — and in a contracted market, there is no second chance walking through the door.</p>
+    <div class="convert-quote">"In a boom, structure is an advantage. In a market contraction, structure is the difference between consolidating market share and exiting the industry."</div>
+    <a href="#pricing" class="btn-primary">Get the Operating System</a>
+    <p style="margin-top: 1.2rem; font-size: 0.8rem; color: var(--grey); text-align: center;">The complete system is <strong style="color: var(--accent);">745 AED</strong> — less than one lost commission. <a href="#pricing" style="color: var(--accent); text-decoration: underline; text-underline-offset: 2px;">See pricing →</a></p>
+  </div>
+</section>
+
+<!-- ─── INLINE TESTIMONIAL — POST CRISIS ─── -->
+<div class="inline-test-wrap" style="padding: 1.5rem 2rem; position: relative; z-index: 1;">
+  <div class="inline-test" style="max-width: 800px; margin: 0 auto; padding: 1.5rem 2rem; background: var(--bg-glass); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); display: flex; gap: 1.2rem; align-items: flex-start;">
+    <div style="font-size: 1.6rem; line-height: 1; color: var(--accent); flex-shrink: 0; font-family: var(--font-serif);">"</div>
+    <div>
+      <p class="inline-test-quote" style="font-size: 0.88rem; color: var(--grey); line-height: 1.6; font-style: italic; margin-bottom: 0.5rem;">Closed a JVC studio 9 days after applying the first-contact script. The buyer said I was the only agent who didn't sound desperate.</p>
+      <p style="font-size: 0.78rem; color: var(--white); font-weight: 600;">Sarah Al-Mahmoud <span style="color: var(--grey); font-weight: 400;">— 2 years in Dubai, independent</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ─── OPPORTUNITY: NEW WAVE BUYERS ─── -->
+<section class="opp-section section-dark">
+  <div class="container">
+    <div class="opp-grid">
+      <div class="opp-left">
+        <span class="label">What Nobody's Talking About</span>
+        <h2>A New Wave of Buyers Is <em>Already Moving</em></h2>
+        <p class="section-text" style="margin-bottom: 1.5rem;">While panicking agents focus on who's leaving, a different type of buyer is entering the market — and most agents don't even recognise them yet.</p>
+        <p class="section-text" style="margin-bottom: 1.5rem;">Every contraction creates discount hunters. Investors who have been priced out of Dubai for three years are now watching developer stocks drop 5%, watching bond markets freeze, watching desperate sellers appear for the first time since COVID. They see the same data everyone else sees — but where others see risk, they see a window.</p>
+        <p class="section-text" style="margin-bottom: 1.5rem;">These are not casual browsers. They're calculated buyers who understand that capital flows back into Dubai faster than confidence does — and they want to be positioned before the recovery, not after it. They're arriving from India, from the UK, from East Asia, with cash, looking for agents who can move fast and talk specifics.</p>
+        <p class="section-text">The problem? Most agents are so busy mourning the old buyer pool that they're completely missing the new one forming right under their feet.</p>
+        <p class="section-text" style="margin-top: 1.5rem;">But finding these buyers is only half the equation. They're looking for deals that don't exist on public portals — off-plan assignments below launch price, motivated sellers who haven't listed yet, developer inventory being moved through back channels. The agents who can <strong style="color: var(--white);">source this stock and match it to the right buyer</strong> aren't just closing deals — they're controlling both sides of a market that everyone else thinks is dead. Premier Blueprint shows you how to build that complete loop.</p>
+        <div class="opp-highlight-box">
+          <p>Premier Blueprint teaches you <strong>both sides of the equation</strong>. On the demand side: exactly where these buyers come from, which channels they use, how to position yourself to attract them, and how to speak their language. On the supply side: <strong>how to source fire-sale inventory, off-plan assignments, and developer back-channel stock before it goes public</strong> — so when the discount buyer asks "what have you got?", you have an answer your competitors don't. That's not just an advantage. It's a moat.</p>
+        </div>
+      </div>
+      <div class="opp-right-cards">
+        <div class="opp-card"><span class="opp-card-label">Buyer Type 01</span><h4>The Dip Investor</h4><p>International capital waiting for exactly this moment. Priced out during the boom, now watching Fitch forecast a 15% correction and off-plan developers offering flexible payment terms for the first time in years. They need an agent who speaks in yields, not lifestyle brochures.</p></div>
+        <div class="opp-card"><span class="opp-card-label">Buyer Type 02</span><h4>The Distressed Resale Hunter</h4><p>Buyers scanning secondary market listings for motivated sellers — expats who need to exit quickly, overleveraged investors offloading below market. These buyers move fast and choose agents who can surface opportunities faster than portals can.</p></div>
+        <div class="opp-card"><span class="opp-card-label">Buyer Type 03</span><h4>The Long-Game Relocator</h4><p>Professionals and families who still believe in Dubai's fundamentals — tax-free income, golden visas, infrastructure — and see the current uncertainty as the best entry point they'll get in a decade. Many will rent first before committing to buy — and the agent who captures the rental relationship first gets the sale six months later. They want reassurance, data, and a structured conversation. Not panic.</p></div>
+        <div class="opp-card"><span class="opp-card-label">Buyer Type 04</span><h4>The Regional Capital Flight Buyer</h4><p>Wealth moving out of more volatile parts of the Gulf and wider Middle East. Despite the strikes, Dubai remains the most diversified, most liquid, and most legally transparent real estate market in the region. These buyers know that — but they need an agent who can articulate it clearly.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FIRE-SALE SOURCING FEATURE CARD ─── -->
+<div class="firesale-card-wrap">
+  <div class="firesale-card">
+    <div class="firesale-left">
+      <div class="firesale-badge"><div class="firesale-badge-dot"></div> Included in the Blueprint</div>
+      <h3>Source the Deals<br><em>Before They Go Public</em></h3>
+      <p>Your discount buyers are ready. But what are you selling them? Most agents wait for fire-sale listings to appear on Bayut — by then, the deal is already gone. The Blueprint teaches you how to identify and secure below-market inventory before it ever hits the open market, so you're not competing for deals — you're controlling them.</p>
+    </div>
+    <div class="firesale-right">
+      <div class="firesale-channels">
+        <div class="firesale-channel">
+          <div class="firesale-channel-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/></svg></div>
+          <div class="firesale-channel-text"><h5>DLD Transaction Monitoring</h5><p>Identify properties bought at 2022–2024 peak prices in areas now softening. Those owners are under pressure — and most haven't listed yet.</p></div>
+        </div>
+        <div class="firesale-channel">
+          <div class="firesale-channel-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 3h5v5"/><path d="M21 3L9 15"/><path d="M21 14v7H3V3h7"/></svg></div>
+          <div class="firesale-channel-text"><h5>Off-Plan Assignment Deals</h5><p>Investors who can't complete looking to assign at 15–25% below market. Learn the mechanics and how to position yourself as the facilitator.</p></div>
+        </div>
+        <div class="firesale-channel">
+          <div class="firesale-channel-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="firesale-channel-text"><h5>Developer Back-Channel Inventory</h5><p>Units being moved quietly at below-launch prices that never appear on portals. How to get on the list.</p></div>
+        </div>
+        <div class="firesale-channel">
+          <div class="firesale-channel-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div class="firesale-channel-text"><h5>Expired & Withdrawn Listings</h5><p>Properties that failed to sell — the seller's problem hasn't been solved. Approach with a ready buyer and a structured pricing strategy.</p></div>
+        </div>
+        <div class="firesale-channel">
+          <div class="firesale-channel-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-5h6v5"/></svg></div>
+          <div class="firesale-channel-text"><h5>Bank Repossession Pipeline</h5><p>Mortgage defaults are rising. The agents who build relationships with bank asset disposal teams now will be first in line for auction inventory.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── INLINE TESTIMONIAL — POST FIRE-SALE ─── -->
+<div class="inline-test-wrap" style="padding: 1.5rem 2rem; position: relative; z-index: 1;">
+  <div class="inline-test" style="max-width: 800px; margin: 0 auto; padding: 1.5rem 2rem; background: var(--bg-glass); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); display: flex; gap: 1.2rem; align-items: flex-start;">
+    <div style="font-size: 1.6rem; line-height: 1; color: var(--accent); flex-shrink: 0; font-family: var(--font-serif);">"</div>
+    <div>
+      <p class="inline-test-quote" style="font-size: 0.88rem; color: var(--grey); line-height: 1.6; font-style: italic; margin-bottom: 0.5rem;">Used the expired listing outreach script on 12 withdrawn properties in Business Bay. Got 4 callbacks in 48 hours and re-mandated two of them at realistic pricing. Never would have approached them without this framework.</p>
+      <p style="font-size: 0.78rem; color: var(--white); font-weight: 600;">Priya Nair <span style="color: var(--grey); font-weight: 400;">— Rental & sales, Business Bay specialist</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SOLUTION ─── -->
+<section id="solution">
+  <div class="container">
+    <div class="solution-header">
+      <span class="label">The Solution</span>
+      <h2>An Operating System Built for <em>This</em> Market</h2>
+      <p class="section-text" style="margin: 0 auto;">Premier Blueprint isn't a course about what Dubai real estate looked like six months ago. It's a framework for the market you're standing in right now — whether you work sales, rentals, or both. Fewer buyers, fewer tenants, fire-sale inventory appearing for the first time in years, and landlords facing vacancy they've never experienced. The agents who can operate with structure across both sides of the market will control every conversation.</p>
+    </div>
+    <div class="solution-cards">
+      <div class="sol-card"><div class="sol-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-5h6v5"/><path d="M9 12h6"/></svg></div><h3>Strategic Foundation</h3><p>How you position yourself in a contracting Dubai market — shaping perception, framing conversations around stability and value, and identifying where discounted inventory and fire-sale opportunities are surfacing before they hit the open market.</p></div>
+      <div class="sol-card"><div class="sol-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Applied Execution</h3><p>The practical layer for handling real enquiries when every one counts. Scripts for first contact, buyer qualification, seller conversations, commission discussions, and the crisis-specific objections that every Dubai agent is now facing daily.</p></div>
+      <div class="sol-card"><div class="sol-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4m0 14v4M4.22 4.22l2.83 2.83m9.9 9.9l2.83 2.83M1 12h4m14 0h4M4.22 19.78l2.83-2.83m9.9-9.9l2.83-2.83"/></svg></div><h3>Complete Control</h3><p>Both layers combined into a unified system. From sourcing below-market inventory and building developer relationships through to attracting discount buyers, handling conversations, and closing — everything an agent needs to control both sides of the deal in a contracted market.</p></div>
+    </div>
+
+    <div class="tactics-divider"><span>How You Actually Capitalise</span></div>
+    <div class="tactics-intro"><p>Knowing the opportunity exists is step one. The Blueprint shows you exactly how to position yourself in front of these buyers — before your competitors even realise they're there. Here's the level of tactical detail you're getting:</p></div>
+    <div class="tactics-grid">
+      <div class="tactic-block"><div class="tactic-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div><h4>Google Ads — Crisis Keywords</h4><p class="tactic-body">Most agents are still bidding on "buy apartment Dubai Marina." The opportunity buyers aren't searching for that. They're searching for crisis-specific intent keywords — terms like <span class="kw">"Dubai property prices dropping"</span>, <span class="kw">"Dubai real estate discount 2026"</span>, <span class="kw">"is it a good time to buy in Dubai"</span>, <span class="kw">"Dubai property market crash"</span>, and <span class="kw">"cheap property Dubai"</span>. These keywords are exploding right now while CPCs remain low — because almost no agents are targeting them. The Blueprint walks you through exactly which keyword clusters to build campaigns around, how to write ad copy that speaks to the discount-seeking investor mindset, and how to structure landing pages that convert cautious buyers into booked viewings.</p></div>
+      <div class="tactic-block"><div class="tactic-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h4>WhatsApp Networks & Relocation Agents</h4><p class="tactic-body">The highest-quality crisis buyers don't come from portals — they come through referral networks. And the single most valuable referral source right now is <strong>relocation agents and mobility consultants</strong>. These people are managing corporate relocations, golden visa applicants, and family moves into Dubai every day — and they need agents they can trust. The Blueprint shows you how to identify and join the right WhatsApp groups where relocation professionals, international mortgage brokers, immigration consultants, and corporate HR managers share leads. You'll learn the exact message frameworks for introducing yourself without getting ignored, how to position yourself as the go-to agent for their relocating clients, and how to build a reciprocal referral pipeline that feeds you warm, qualified leads — not cold enquiries from a portal.</p></div>
+      <div class="tactic-block"><div class="tactic-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div><h4>Social Content That Attracts Opportunity Buyers</h4><p class="tactic-body">The agents posting "stunning 2BR in Downtown" right now are invisible to opportunity buyers. These buyers are looking for market analysis, pricing data, and someone who understands the macro picture. The Blueprint teaches you how to create content that positions you as the <strong>analytical, data-driven agent</strong> — the one sharing yield comparisons, area-by-area price movements, and honest takes on where the market is heading. This is the content that gets shared in investor WhatsApp groups, gets saved by buyers doing due diligence, and gets you inbound DMs from people who are ready to transact — not just scroll. You'll learn which platforms to prioritise (LinkedIn is massively underused by Dubai agents for investor-class buyers), what formats convert, and how to repurpose a single data insight into a week of content.</p></div>
+      <div class="tactic-block"><div class="tactic-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h4>Portal Strategy — Sales & Rental Listings</h4><p class="tactic-body">Bayut and Property Finder traffic hasn't disappeared — it's shifted. On the sales side, search traffic for <strong>below-market listings, motivated seller properties, and value-segment apartments</strong> is climbing while luxury browsing has paused. On the rental side, tenants who are staying need to see listings that signal stability — not desperation. The Blueprint shows you how to restructure both your sales and rental portal listings to capture the demand that's actually active right now, including pricing language, urgency signals, and description copy tailored to each audience.</p></div>
+      <div class="tactic-block"><div class="tactic-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h4>Co-Broker Networks & Developer Relationships</h4><p class="tactic-body">Developers are sitting on unsold inventory for the first time in years. Off-plan sales have stalled and some are quietly offering <strong>agent incentives, flexible payment plans, and commission bumps</strong> to move stock. The agents who build direct relationships with developer sales teams right now — while the competition has gone quiet — will lock in preferential access to inventory and pricing that won't be available once confidence returns.</p></div>
+      <div class="tactic-block"><div class="tactic-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h4>International Buyer Targeting — India, UK, East Asia</h4><p class="tactic-body">Indian nationals already account for 20–22% of all foreign property purchases in Dubai. That demand hasn't vanished — it's hesitating. The Blueprint shows you how to <strong>run geo-targeted ad campaigns</strong> aimed at these specific nationalities, which platforms and channels they use to research Dubai property, and how to tailor your messaging to address their specific concerns — currency hedging, rental yield comparisons to their home markets, visa pathways, and post-conflict resale confidence.</p></div>
+      <div class="tactic-block"><div class="tactic-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h4>Sourcing Fire-Sale & Off-Market Inventory</h4><p class="tactic-body">The discount buyers are coming — but what are you selling them? Most agents wait for distressed listings to appear on Bayut. By then, the opportunity is gone. The Blueprint shows you how to <strong>find below-market inventory before it goes public</strong>. You'll learn how to monitor DLD transaction data for properties purchased at 2022–2024 peak prices in areas now softening — those owners are under pressure and most haven't listed yet. You'll learn how to identify and approach <strong>off-plan assignment deals</strong> — investors who bought at launch and can't or won't complete, looking to assign at 15–25% below current market to avoid default penalties. You'll learn how to access <strong>developer back-channel inventory</strong> — the units being moved quietly at below-launch prices that never appear on portals. And you'll learn how to work the <strong>expired and withdrawn listing pipeline</strong> — properties that failed to sell with their previous agent, where the seller's problem hasn't been solved and they're waiting for someone who can actually move it. The agents who control supply in a contracted market don't compete — they dictate terms.</p></div>
+    </div>
+    <div style="text-align: center; margin-top: 3.5rem;">
+      <a href="#pricing" class="btn-primary">Get the Complete System — <span class="dynamic-price">745 AED</span></a>
+      <p style="font-size: 0.78rem; color: var(--grey); margin-top: 1rem;">Every tactic above is covered in step-by-step detail inside the Blueprint and Operator Pack.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FULL SYLLABUS ─── -->
+<section class="section-dark" id="contents">
+  <div class="container">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto 3.5rem;">
+      <span class="label">Full Syllabus</span>
+      <h2>Two Products. <em>One System.</em></h2>
+      <p class="section-text" style="margin: 0.5rem auto 0;">Click any module to see exactly what's covered inside.</p>
+    </div>
+    <div class="syllabus-tabs">
+      <!-- PILL TOGGLE -->
+      <div class="syl-pill-toggle">
+        <div class="syl-pill-track">
+          <div class="syl-pill-slider" id="sylSlider"></div>
+          <button class="syl-pill-btn active" data-tab="blueprint" id="sylBtnBlueprint">Premier Blueprint</button>
+          <button class="syl-pill-btn" data-tab="operator" id="sylBtnOperator">Operator Pack</button>
+        </div>
+      </div>
+
+      <!-- TAB 1: PREMIER BLUEPRINT -->
+      <div class="syl-tab-panel active" id="tab-blueprint">
+        <div class="syllabus-col">
+
+        <div class="syl-module"><div class="syl-module-header"><div class="syl-module-title"><span class="syl-guide-label">Guide 1 — The Market & Your Position In It</span></div><span class="syl-module-toggle">+</span></div><div class="syl-module-body" style="padding-top:0.5rem;">
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Why This Moment Is Different</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">How the Iran conflict has structurally changed buyer psychology, deal flow, and the competitive landscape</li>
+            <li class="syl-sub-item">Why Dubai's fundamentals remain strong despite short-term confidence shock</li>
+            <li class="syl-sub-item">Market cycles: how Dubai recovered from 2008 and COVID — and what the pattern tells us about this correction</li>
+            <li class="syl-sub-item">The 100,000+ unit oversupply: which segments are exposed and which are insulated</li>
+            <li class="syl-sub-item">Reading the data: Fitch forecasts, off-plan pipeline freeze, and developer stock signals</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Positioning Yourself as the Crisis-Ready Agent</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">How to differentiate yourself from 45,000+ agents who are all saying the same thing</li>
+            <li class="syl-sub-item">Building a brand that signals calm authority — not desperation or false optimism</li>
+            <li class="syl-sub-item">Profile, bio, and visual identity upgrades that attract investor-class buyers</li>
+            <li class="syl-sub-item">Why the agents who position as data-driven advisors right now will own the next cycle</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Understanding the New Buyer Landscape</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">The four buyer types emerging in the crisis: dip investors, distressed resale hunters, long-game relocators, and capital flight buyers</li>
+            <li class="syl-sub-item">How each type thinks, what triggers their decision, and what makes them walk away</li>
+            <li class="syl-sub-item">Why the conversation with a discount-seeking investor is fundamentally different from the lifestyle relocator pitch</li>
+          </ul></div>
+        </div></div>
+
+        <div class="syl-module"><div class="syl-module-header"><div class="syl-module-title"><span class="syl-guide-label">Guide 2 — Visibility & Lead Acquisition</span></div><span class="syl-module-toggle">+</span></div><div class="syl-module-body" style="padding-top:0.5rem;">
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Social Content for a Contracted Market</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">Why "stunning 2BR in Downtown" posts are invisible to the buyers who are actually active right now</li>
+            <li class="syl-sub-item">Content frameworks that attract dip investors and discount hunters — not lifestyle browsers</li>
+            <li class="syl-sub-item">Turning market data into shareable posts that get forwarded in investor WhatsApp groups</li>
+            <li class="syl-sub-item">Why LinkedIn is the single most underused channel for Dubai agents targeting serious capital</li>
+            <li class="syl-sub-item">How to repurpose one data insight into a full week of content across Instagram, TikTok, and LinkedIn</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Google Ads — Crisis Keyword Strategy</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">The crisis-specific keyword clusters that are exploding right now while CPCs stay low</li>
+            <li class="syl-sub-item">How to target "Dubai property prices dropping," "is it a good time to buy in Dubai," and other high-intent search terms</li>
+            <li class="syl-sub-item">Ad copy frameworks that speak to the discount-seeking investor mindset</li>
+            <li class="syl-sub-item">Landing page structure that converts cautious, research-heavy clicks into booked viewings</li>
+            <li class="syl-sub-item">Budget allocation, bidding strategy, and geo-targeting for international buyer campaigns</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Lead Generation Networks</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">How to find and join WhatsApp groups where relocation agents, mortgage brokers, and corporate HR share leads</li>
+            <li class="syl-sub-item">Message frameworks for introducing yourself to relocation professionals without getting ignored</li>
+            <li class="syl-sub-item">Building reciprocal referral pipelines with immigration consultants and golden visa advisors</li>
+            <li class="syl-sub-item">Portal optimisation: restructuring Bayut and Property Finder listings for distressed-buyer search traffic</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">International Buyer Targeting</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">Geo-targeted campaigns for Indian, UK, and East Asian buyers — the three largest foreign investor groups</li>
+            <li class="syl-sub-item">Which platforms and channels each nationality uses to research Dubai property (they're not the same)</li>
+            <li class="syl-sub-item">Tailoring messaging for currency hedging concerns, yield comparisons to home markets, and visa pathways</li>
+            <li class="syl-sub-item">Partnering with overseas property exhibitions and diaspora community groups for leads most agents never access</li>
+          </ul></div>
+        </div></div>
+
+        <div class="syl-module"><div class="syl-module-header"><div class="syl-module-title"><span class="syl-guide-label">Guide 3 — Sourcing Fire-Sale & Off-Market Inventory</span></div><span class="syl-module-toggle">+</span></div><div class="syl-module-body" style="padding-top:0.5rem;">
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Identifying Distressed Sellers Before They List</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">Using DLD transaction data to spot properties bought at 2022–2024 peak prices in areas now softening</li>
+            <li class="syl-sub-item">Behavioural signals that indicate a seller is under pressure: price drops, listing duration, agent switches</li>
+            <li class="syl-sub-item">Building a watchlist: the specific areas, property types, and price brackets where distressed stock is concentrated right now</li>
+            <li class="syl-sub-item">How to approach a potential seller who hasn't listed yet — without sounding like a cold caller</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Off-Plan Assignment Deals</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">How to find investors looking to assign below launch price to avoid default penalties</li>
+            <li class="syl-sub-item">The mechanics of the assignment process: legal structure, developer consent, fee splits</li>
+            <li class="syl-sub-item">Positioning yourself as the go-to facilitator for assignments — a niche most agents don't touch</li>
+            <li class="syl-sub-item">How to price assignments competitively while protecting your commission</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Developer Back-Channel & Bulk Inventory</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">How developers are quietly moving unsold units at below-launch prices through select agents</li>
+            <li class="syl-sub-item">Getting on the preferred agent list: what developers look for and how to position your ask</li>
+            <li class="syl-sub-item">Negotiating exclusive access windows, commission bumps, and flexible payment plan incentives</li>
+            <li class="syl-sub-item">Bulk deal opportunities: when investor groups are buying 5–10 units and need an agent who can package the offer</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Expired Listings, Auctions & Bank Repos</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">Working the expired and withdrawn listing pipeline: these sellers' problems haven't been solved</li>
+            <li class="syl-sub-item">The outreach script that converts expired listing owners into re-mandates at realistic pricing</li>
+            <li class="syl-sub-item">Understanding the 6–12 month mortgage default cycle and when auction inventory will start appearing</li>
+            <li class="syl-sub-item">Building relationships with bank asset disposal teams so you're first in line for repossessed stock</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Packaging & Presenting Below-Market Deals</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">How to present a fire-sale opportunity to an investor without sounding desperate or underselling the property</li>
+            <li class="syl-sub-item">Creating urgency through exclusivity: "I have 48 hours before this goes to market" framing</li>
+            <li class="syl-sub-item">Yield calculators, comparable pricing sheets, and data packs that sophisticated investors expect</li>
+            <li class="syl-sub-item">Matching inventory to buyer type: which deals suit dip investors vs relocators vs capital flight buyers</li>
+          </ul></div>
+        </div></div>
+
+        <div class="syl-module"><div class="syl-module-header"><div class="syl-module-title"><span class="syl-guide-label">Guide 4 — Client Communication & Conversations</span></div><span class="syl-module-toggle">+</span></div><div class="syl-module-body" style="padding-top:0.5rem;">
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Handling the Hard Questions — Buyers & Tenants</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">How to answer "Is Dubai still safe to invest in?" and "Should I still relocate?" with confidence and data</li>
+            <li class="syl-sub-item">Scripts for addressing resale value fears, conflict escalation concerns, and "should I wait?" objections</li>
+            <li class="syl-sub-item">Framing Dubai's resilience story: what to say, what data to cite, and how to deliver it without sounding defensive</li>
+            <li class="syl-sub-item">Communication frameworks tailored to buyers, tenants, and each of the four crisis buyer types</li>
+            <li class="syl-sub-item">Handling the tenant who wants to break their lease vs the tenant who's hesitating to renew</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Seller & Landlord Management in a Volatile Market</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">Advising sellers on realistic pricing without losing the mandate</li>
+            <li class="syl-sub-item">Managing the motivated seller relationship: urgency without panic, structure without rigidity</li>
+            <li class="syl-sub-item">How to present fire-sale pricing to a seller as a strategic decision, not a surrender</li>
+            <li class="syl-sub-item">Landlord conversations: advising on rental pricing adjustments, vacancy strategy, and tenant retention</li>
+            <li class="syl-sub-item">Converting a landlord rental management conversation into a sales mandate when they're ready to exit</li>
+          </ul></div>
+        </div></div>
+
+        <div class="syl-module"><div class="syl-module-header"><div class="syl-module-title"><span class="syl-guide-label">Guide 5 — Deal Execution & Market Strategy</span></div><span class="syl-module-toggle">+</span></div><div class="syl-module-body" style="padding-top:0.5rem;">
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Off-Plan Sales in an Uncertain Market</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">Which off-plan projects and areas still carry investor confidence post-strikes</li>
+            <li class="syl-sub-item">Selling payment plan flexibility as the key differentiator for hesitant buyers</li>
+            <li class="syl-sub-item">Handling objections about delivery risk, construction delays, and future resale in a volatile market</li>
+            <li class="syl-sub-item">How to frame off-plan as a strategic entry point for dip investors looking at 2028–2030 value</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Secondary Market — Capturing Distressed & Value Deals</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">Listing descriptions that attract deal-seeking investors instead of lifestyle dreamers</li>
+            <li class="syl-sub-item">Which areas and property types are seeing the most distressed-buyer search volume right now</li>
+            <li class="syl-sub-item">Pricing strategy in a softening market — how to advise without underselling or losing the mandate</li>
+            <li class="syl-sub-item">Closing the loop: matching your sourced inventory to your buyer network for faster conversion</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Co-Brokering & Developer Negotiations</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">Co-broker frameworks that give you access to listings without losing control of your client</li>
+            <li class="syl-sub-item">Negotiating commission structures in a buyer's market where agents are undercutting each other</li>
+            <li class="syl-sub-item">Building the developer relationship pipeline that pays off when the market recovers</li>
+          </ul></div>
+        </div></div>
+
+        <div class="syl-module"><div class="syl-module-header"><div class="syl-module-title"><span class="syl-guide-label">Guide 6 — Operations, Tools & Scaling</span></div><span class="syl-module-toggle">+</span></div><div class="syl-module-body" style="padding-top:0.5rem;">
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Daily Operating Discipline</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">Structuring your day around proactive sourcing and outreach — not waiting for portal notifications</li>
+            <li class="syl-sub-item">Communication cadence: how often to follow up, when to push, and when to hold</li>
+            <li class="syl-sub-item">Weekly review framework: tracking conversion rates, lead sources, inventory pipeline, and deal velocity</li>
+            <li class="syl-sub-item">Time-blocking for content creation, network building, inventory sourcing, and deal execution</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Tools, CRM & Tech Stack</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">CRM setup for tracking leads by buyer type, intent level, and matched inventory</li>
+            <li class="syl-sub-item">Automation tools for follow-up sequences, nurture campaigns, and inventory alerts</li>
+            <li class="syl-sub-item">Data sources for real-time market analysis, DLD monitoring, and pricing intelligence</li>
+            <li class="syl-sub-item">The tech stack a modern Dubai agent needs to run both sides of the deal — sourcing and selling</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Brand Scaling & Recovery Positioning</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">Becoming the recognised name for crisis-market expertise in your niche or area</li>
+            <li class="syl-sub-item">PR, media appearances, and building authority through published market analysis</li>
+            <li class="syl-sub-item">Preparing for the recovery: the agents who build during the dip will own the next cycle</li>
+          </ul></div>
+        </div></div>
+
+      </div>
+      </div>
+
+      <!-- TAB 2: OPERATOR PACK -->
+      <div class="syl-tab-panel" id="tab-operator">
+        <div class="syllabus-col">
+        <div class="syl-module"><div class="syl-module-header"><div class="syl-module-title"><span class="syl-guide-label">Guide 1 — Mindset & First Contact</span></div><span class="syl-module-toggle">+</span></div><div class="syl-module-body" style="padding-top:0.5rem;">
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Operator Mindset</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">Why projecting calm authority is the single most valuable skill in a crisis market</li>
+            <li class="syl-sub-item">How the agents who are closing right now think differently from the ones who are panicking</li>
+            <li class="syl-sub-item">Reframing your role: from property salesperson to market advisor and strategic partner</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">First Contact — Setting the Frame</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">What to say in the first WhatsApp response when a buyer asks about the market situation</li>
+            <li class="syl-sub-item">Templates for portal enquiries, social DMs, relocation referrals, and cold outreach</li>
+            <li class="syl-sub-item">How to establish authority in the first 60 seconds so the buyer never compares you to another agent</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Qualifying the New Buyer Types</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">Intent-revealing questions that separate dip investors from time-wasting browsers</li>
+            <li class="syl-sub-item">Different qualification scripts for discount hunters, relocators, and capital flight buyers</li>
+            <li class="syl-sub-item">Reading the signals: how to know within 3 messages whether a lead is worth your time</li>
+          </ul></div>
+        </div></div>
+
+        <div class="syl-module"><div class="syl-module-header"><div class="syl-module-title"><span class="syl-guide-label">Guide 2 — Buyer Conversations That Convert</span></div><span class="syl-module-toggle">+</span></div><div class="syl-module-body" style="padding-top:0.5rem;">
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Low-Intent Filtering</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">The behavioural signals that predict whether a lead will convert — spotted in the first interaction</li>
+            <li class="syl-sub-item">How to disengage gracefully from low-intent enquiries without burning future referral potential</li>
+            <li class="syl-sub-item">Time protection strategies: in a contracted market, every hour spent on the wrong lead costs you the right one</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Presenting Fire-Sale Opportunities to Buyers</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">How to pitch a below-market deal to a dip investor: data, yields, comparable pricing, and urgency framing</li>
+            <li class="syl-sub-item">Scripts for presenting off-plan assignments, distressed resale, and developer back-channel stock</li>
+            <li class="syl-sub-item">Creating exclusivity and time pressure without being pushy: "this goes to market in 48 hours" frameworks</li>
+            <li class="syl-sub-item">Handling the sophisticated investor who pushes back on pricing, due diligence, and exit strategy</li>
+            <li class="syl-sub-item">Adapting these frameworks for tenant enquiries: relocators who rent first and buy later</li>
+          </ul></div>
+        </div></div>
+
+        <div class="syl-module"><div class="syl-module-header"><div class="syl-module-title"><span class="syl-guide-label">Guide 3 — Seller & Listing Conversations</span></div><span class="syl-module-toggle">+</span></div><div class="syl-module-body" style="padding-top:0.5rem;">
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Seller Conversations in a Softening Market</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">Authority-led openings that position you as the agent who understands the current reality</li>
+            <li class="syl-sub-item">How to advise on realistic pricing without losing the listing mandate</li>
+            <li class="syl-sub-item">Scripts for sellers who want to overprice in denial, or panic-sell below market</li>
+            <li class="syl-sub-item">Managing expectations when timelines, prices, and buyer behaviour have all shifted overnight</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Approaching Distressed & Off-Market Sellers</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">Scripts for approaching owners who haven't listed but are under financial pressure</li>
+            <li class="syl-sub-item">How to frame a fire-sale price as a strategic exit rather than a loss</li>
+            <li class="syl-sub-item">Converting expired listing owners: the outreach framework that re-mandates at realistic pricing</li>
+            <li class="syl-sub-item">Managing the motivated seller who wants speed: setting timelines, expectations, and commission structures</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Landlord Conversations & Rental Retention</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">Scripts for landlords facing sudden vacancy from expat departures</li>
+            <li class="syl-sub-item">How to advise on rental pricing adjustments without panicking the landlord</li>
+            <li class="syl-sub-item">Framing vacancy as a repositioning opportunity — upgrading the unit or tenant profile</li>
+            <li class="syl-sub-item">Converting a rental management conversation into a sales mandate when the landlord is ready to exit</li>
+          </ul></div>
+        </div></div>
+
+        <div class="syl-module"><div class="syl-module-header"><div class="syl-module-title"><span class="syl-guide-label">Guide 4 — Negotiation, Control & Closing</span></div><span class="syl-module-toggle">+</span></div><div class="syl-module-body" style="padding-top:0.5rem;">
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Commission & Comparison Control</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">How to handle "another agent offered a lower commission" — without flinching or discounting</li>
+            <li class="syl-sub-item">Reframing commission as an investment in structured execution, not a negotiable cost</li>
+            <li class="syl-sub-item">Why agents who hold their fee in a downturn signal more value than agents who cut it</li>
+          </ul></div>
+          <div class="syl-module" style="border-bottom:none;"><div class="syl-module-header" style="padding:0.6rem 0 0.6rem 0.5rem;"><div class="syl-module-title"><span class="syl-module-name" style="font-size:0.86rem;">Follow-Ups, Boundaries & Closing</span></div></div><ul class="syl-sub-list" style="padding-top:0;">
+            <li class="syl-sub-item">Follow-up sequences that maintain presence without chasing — especially with hesitant post-crisis buyers</li>
+            <li class="syl-sub-item">When and how to walk away from a deal calmly, preserving the relationship for the recovery</li>
+            <li class="syl-sub-item">WhatsApp templates for every stage: first response, qualification, objection, follow-up, and close</li>
+            <li class="syl-sub-item">Setting professional boundaries with clients, co-brokers, and developers so you're respected, not used</li>
+          </ul></div>
+        </div></div>
+
+        <div style="margin-top:2rem;padding:1.5rem;background:var(--bg-glass);border:1px solid var(--border-accent);border-radius:var(--radius-md);backdrop-filter:blur(10px);"><p style="font-size:0.83rem;color:var(--grey);line-height:1.6;">Every script and framework in the Operator Pack is written for <span style="color:var(--white);font-weight:600;">the exact conversations happening in Dubai right now</span> — buyers asking about safety, tenants weighing whether to stay or leave, sellers panicking about pricing, landlords facing vacancy for the first time, and investors probing for weakness. Whether you work sales, rentals, or both — these are built for the market you're operating in this week.</p></div>
+      </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── BUILT BY AGENTS ─── -->
+<section>
+  <div class="container">
+    <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+      <span class="label">Who Built This</span>
+      <h2>Built by Agents. <em>For Agents.</em></h2>
+      <p class="section-text" style="margin: 0 auto 2rem;">Premier Blueprint wasn't written by a marketing consultant or a coaching guru who's never held a listing. It was built by agents who are actively operating in the Dubai market — who have sat across from panicking sellers, handled the "Is it safe?" question on live calls, and closed deals in conditions most agents haven't seen before.</p>
+      <p class="section-text" style="margin: 0 auto 2rem;">Every script, every framework, every keyword strategy in this system was developed from real conversations, real transactions, and real data from the Dubai market — not adapted from a generic playbook written for another country. The fire-sale sourcing methods come from agents who've actually approached distressed sellers and re-mandated expired listings. The WhatsApp templates come from conversations that have converted. The Google Ads keyword clusters come from campaigns running right now in this market.</p>
+      <p class="section-text" style="margin: 0 auto; color: var(--white);">This is what works on the ground in Dubai in March 2026 — not what worked somewhere else two years ago.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRODUCT PREVIEW ─── -->
+<div style="padding: 2rem; position: relative; z-index: 1;">
+  <div class="product-mockups" style="max-width: 900px; margin: 0 auto; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; align-items: flex-end;">
+    <!-- Blueprint mockup -->
+    <div style="width: 220px; flex-shrink: 0;">
+      <svg viewBox="0 0 220 310" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; filter: drop-shadow(0 12px 40px rgba(0,0,0,0.4)) drop-shadow(0 0 30px rgba(201,168,76,0.08));">
+        <rect x="2" y="2" width="216" height="306" rx="8" fill="#0c0c10" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+        <rect x="2" y="2" width="216" height="306" rx="8" fill="url(#mockGrad1)"/>
+        <!-- Gold accent line top -->
+        <rect x="20" y="20" width="60" height="2" rx="1" fill="rgba(201,168,76,0.5)"/>
+        <!-- Title area -->
+        <rect x="20" y="40" width="160" height="8" rx="2" fill="rgba(255,255,255,0.15)"/>
+        <rect x="20" y="54" width="120" height="8" rx="2" fill="rgba(255,255,255,0.08)"/>
+        <!-- Subtitle -->
+        <rect x="20" y="78" width="176" height="4" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="88" width="150" height="4" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="98" width="165" height="4" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <!-- Divider -->
+        <line x1="20" y1="118" x2="196" y2="118" stroke="rgba(201,168,76,0.12)" stroke-width="0.5"/>
+        <!-- Content lines -->
+        <rect x="20" y="130" width="40" height="3" rx="1" fill="rgba(201,168,76,0.3)"/>
+        <rect x="20" y="142" width="176" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="150" width="160" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="158" width="170" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="166" width="145" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <!-- Second section -->
+        <rect x="20" y="186" width="50" height="3" rx="1" fill="rgba(201,168,76,0.3)"/>
+        <rect x="20" y="198" width="176" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="206" width="155" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="214" width="168" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="222" width="140" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="230" width="176" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <!-- Third section -->
+        <rect x="20" y="250" width="45" height="3" rx="1" fill="rgba(201,168,76,0.3)"/>
+        <rect x="20" y="262" width="170" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="270" width="155" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="278" width="176" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <!-- PB Logo bottom -->
+        <text x="110" y="298" text-anchor="middle" fill="rgba(201,168,76,0.15)" font-family="Georgia" font-size="8">PREMIER BLUEPRINT</text>
+        <defs><linearGradient id="mockGrad1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(201,168,76,0.03)"/><stop offset="100%" stop-color="rgba(0,0,0,0)"/></linearGradient></defs>
+      </svg>
+      <p style="text-align: center; font-size: 0.72rem; color: var(--grey); margin-top: 0.8rem; font-weight: 600;">Premier Blueprint</p>
+    </div>
+    <!-- Operator Pack mockup -->
+    <div style="width: 220px; flex-shrink: 0;">
+      <svg viewBox="0 0 220 310" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; filter: drop-shadow(0 12px 40px rgba(0,0,0,0.4)) drop-shadow(0 0 30px rgba(201,168,76,0.08));">
+        <rect x="2" y="2" width="216" height="306" rx="8" fill="#0c0c10" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+        <rect x="2" y="2" width="216" height="306" rx="8" fill="url(#mockGrad2)"/>
+        <rect x="20" y="20" width="40" height="2" rx="1" fill="rgba(201,168,76,0.4)"/>
+        <rect x="20" y="40" width="140" height="8" rx="2" fill="rgba(255,255,255,0.12)"/>
+        <rect x="20" y="54" width="100" height="8" rx="2" fill="rgba(255,255,255,0.07)"/>
+        <rect x="20" y="78" width="176" height="4" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="88" width="150" height="4" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <line x1="20" y1="108" x2="196" y2="108" stroke="rgba(201,168,76,0.1)" stroke-width="0.5"/>
+        <!-- WhatsApp-style chat bubbles -->
+        <rect x="20" y="120" width="120" height="22" rx="8" fill="rgba(201,168,76,0.06)" stroke="rgba(201,168,76,0.1)" stroke-width="0.5"/>
+        <rect x="28" y="128" width="80" height="3" rx="1" fill="rgba(255,255,255,0.06)"/>
+        <rect x="28" y="135" width="55" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="60" y="152" width="136" height="22" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+        <rect x="68" y="160" width="90" height="3" rx="1" fill="rgba(255,255,255,0.06)"/>
+        <rect x="68" y="167" width="60" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="184" width="140" height="22" rx="8" fill="rgba(201,168,76,0.06)" stroke="rgba(201,168,76,0.1)" stroke-width="0.5"/>
+        <rect x="28" y="192" width="95" height="3" rx="1" fill="rgba(255,255,255,0.06)"/>
+        <rect x="28" y="199" width="70" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <!-- Script section below -->
+        <line x1="20" y1="220" x2="196" y2="220" stroke="rgba(201,168,76,0.1)" stroke-width="0.5"/>
+        <rect x="20" y="232" width="55" height="3" rx="1" fill="rgba(201,168,76,0.25)"/>
+        <rect x="20" y="244" width="176" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="252" width="160" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="260" width="170" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="268" width="145" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="20" y="276" width="176" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <text x="110" y="298" text-anchor="middle" fill="rgba(201,168,76,0.15)" font-family="Georgia" font-size="8">OPERATOR PACK</text>
+        <defs><linearGradient id="mockGrad2" x1="1" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(201,168,76,0.02)"/><stop offset="100%" stop-color="rgba(0,0,0,0)"/></linearGradient></defs>
+      </svg>
+      <p style="text-align: center; font-size: 0.72rem; color: var(--grey); margin-top: 0.8rem; font-weight: 600;">Operator Pack</p>
+    </div>
+  </div>
+  <p style="text-align: center; font-size: 0.75rem; color: var(--grey); margin-top: 1.5rem;">Professionally designed digital guides. Instant PDF delivery. Read on any device.</p>
+</div>
+
+<!-- ─── PRICING ─── -->
+<section class="section-dark" id="pricing">
+  <div class="container">
+    <div style="text-align:center;max-width:700px;margin:0 auto;">
+      <span class="label">Limited Period Pricing</span>
+      <h2>One Lost Commission Costs More Than <em>This Entire System</em></h2>
+      <p class="section-text" style="margin:0 auto;">In a market where you might see 30–40% fewer serious enquiries this quarter — because flights are grounded, expats are pausing, and buyer confidence has been physically shaken by missile strikes on landmarks — the question isn't whether this is worth the money. It's how many more leads you can afford to lose before the math stops working.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card"><h3>Premier Blueprint</h3><p class="price-desc">The strategy — what to do, where to find opportunities, and how to position yourself.</p><div class="price-row"><div class="price-amount">495 <span>AED</span></div><div class="price-original">990</div></div><div class="price-savings" style="margin:0.5rem 0 0.3rem;">50% Off — Save 495 AED</div><p class="price-note">Secure checkout. Instant PDF delivery.</p><ul class="price-features"><li>Advisor-level positioning in a contracting market</li><li>Sourcing fire-sale & off-market inventory</li><li>Sales and rental conversation frameworks</li><li>Google Ads crisis keyword strategy</li><li>Lead generation and visibility system</li><li>Developer & co-broker relationship frameworks</li></ul><a href="https://buy.stripe.com/dRm00k3FP19J4zf5Gh0RG0b" class="btn-secondary">Access Premier Blueprint</a></div>
+      <div class="price-card"><h3>Operator Pack</h3><p class="price-desc">The scripts — exactly what to say in every conversation, message, and negotiation.</p><div class="price-row"><div class="price-amount">495 <span>AED</span></div><div class="price-original">990</div></div><div class="price-savings" style="margin:0.5rem 0 0.3rem;">50% Off — Save 495 AED</div><p class="price-note">Secure checkout. Instant PDF delivery.</p><ul class="price-features"><li>Buyer, tenant, and seller scripts</li><li>Lead qualification and intent filtering</li><li>Commission and pricing control frameworks</li><li>WhatsApp communication templates</li><li>Fire-sale presentation scripts</li><li>Follow-ups without chasing</li></ul><a href="https://buy.stripe.com/5kQcN6fox6u3aXD7Op0RG0c" class="btn-secondary">Access Operator Pack</a></div>
+      <div class="price-card featured"><div class="featured-badge">Best Value — Most Popular</div><h3>Complete System</h3><p class="price-desc">Both. Strategy and scripts. The full loop — source deals, find buyers, close with control.</p><div class="price-row"><div class="price-amount">745 <span>AED</span></div><div class="price-original">1,490</div></div><div class="price-savings" style="margin:0.5rem 0 0.3rem;">50% Off — Save 745 AED</div><p class="price-note">Secure checkout. Both products included.</p><ul class="price-features"><li>Everything in both packs</li><li>Source discounted stock before it goes public</li><li>Attract and convert opportunity buyers</li><li>Sales, rental, and investor conversations</li><li>Negotiation and commission frameworks</li><li>Long-term professional positioning</li></ul><a href="https://buy.stripe.com/5kQ14o6S14lVd5Lb0B0RG0d" class="btn-primary">Get the Complete System</a></div>
+    </div>
+    <div class="countdown-strip"><div class="countdown-label">Limited Period Pricing Ends In</div><div class="countdown-timer"><div class="cd-unit"><div class="cd-num" id="cd-hours">21</div><div class="cd-label">Hours</div></div><div class="cd-unit"><div class="cd-num" id="cd-mins">59</div><div class="cd-label">Mins</div></div><div class="cd-unit"><div class="cd-num" id="cd-secs">59</div><div class="cd-label">Secs</div></div></div><div class="countdown-note">After this window, all prices return to their standard rate. No extensions.</div></div>
+    <p style="text-align:center;margin-top:2rem;font-size:0.78rem;color:var(--grey);">All payments secured by Stripe. Instant digital delivery.</p>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section id="faq">
+  <div class="container">
+    <div style="text-align:center;"><span class="label">FAQ</span><h2>Questions You're Asking</h2></div>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q">Is this actually specific to Dubai — or generic advice with "Dubai" pasted on? <span class="faq-toggle">+</span></div><div class="faq-a"><div class="faq-a-inner">Every framework, script, and strategy in the system was built specifically for the Dubai market — referencing DLD data, Bayut and Property Finder, RERA processes, Dubai-specific developer dynamics, and the exact buyer nationalities and channels active in this market. The Google Ads keyword clusters are from live campaigns running in Dubai right now. The WhatsApp scripts reference conversations happening in Dubai broker groups this week. This isn't adapted from a US or UK playbook.</div></div></div>
+
+      <div class="faq-item"><div class="faq-q">How is this different from the free advice on YouTube and agent WhatsApp groups? <span class="faq-toggle">+</span></div><div class="faq-a"><div class="faq-a-inner">Free content tells you what to do in general terms. This gives you the exact scripts, keyword lists, outreach templates, and step-by-step frameworks to execute — specific to the current crisis market. The fire-sale sourcing methods, the relocation agent WhatsApp intro messages, the crisis keyword clusters — none of this exists in free content because it's too specific and too current. Free advice also can't be wrong — there's no accountability. This system is built by agents who are using it themselves right now.</div></div></div>
+
+      <div class="faq-item"><div class="faq-q">I'm a new agent with less than a year of experience. Is this too advanced? <span class="faq-toggle">+</span></div><div class="faq-a"><div class="faq-a-inner">No — in fact, newer agents often get more from this than experienced ones, because you don't have to unlearn bad habits. The system assumes basic knowledge of how Dubai real estate works (RERA registration, how transactions flow, what portals are), but the conversation frameworks, positioning strategies, and lead generation methods are explained step-by-step. If you're actively working with buyers, tenants, or sellers in Dubai, you have enough experience to apply this immediately.</div></div></div>
+
+      <div class="faq-item"><div class="faq-q">I work at a brokerage, not independently. Does this apply to me? <span class="faq-toggle">+</span></div><div class="faq-a"><div class="faq-a-inner">Yes. Most of the system focuses on how you handle conversations, position yourself, source inventory, and convert leads — which is your job regardless of whether you're independent or at a brokerage. The Google Ads and social content strategies can be applied individually or proposed to your brokerage's marketing team. The developer relationship and co-brokering frameworks are especially relevant for brokerage agents who need to build their own deal flow beyond what the company provides.</div></div></div>
+
+      <div class="faq-item"><div class="faq-q">What if the market recovers quickly — is this still useful? <span class="faq-toggle">+</span></div><div class="faq-a"><div class="faq-a-inner">The crisis-specific tactics (fire-sale sourcing, crisis keywords, distressed seller outreach) are designed for right now. But the core frameworks — positioning, conversation structure, lead qualification, WhatsApp scripts, developer relationships, commission control — are permanent skills that apply in any market condition. The agents who build these systems during the downturn will be better operators when confidence returns. The market will recover. Your competitive advantage won't disappear with it.</div></div></div>
+
+      <div class="faq-item"><div class="faq-q">What format is the product? Video, PDF, app? <span class="faq-toggle">+</span></div><div class="faq-a"><div class="faq-a-inner">Professionally designed digital PDF guides — delivered instantly to your email. No video courses, no login portals, no apps to download. You can read them on your phone between viewings, on your laptop at your desk, or print specific scripts to keep next to you during calls. They're designed to be used as working reference documents, not watched once and forgotten.</div></div></div>
+
+      <div class="faq-item"><div class="faq-q">Can I share this with my team? <span class="faq-toggle">+</span></div><div class="faq-a"><div class="faq-a-inner">The purchase is for individual use. If you're a team lead or brokerage manager looking to equip your team, reach out to info@premierblueprint.com and we can discuss team pricing.</div></div></div>
+
+      <div class="faq-item"><div class="faq-q">Why is it 50% off right now? <span class="faq-toggle">+</span></div><div class="faq-a"><div class="faq-a-inner">Because agents need this most urgently right now, and we don't want price to be the reason someone doesn't adapt to a market that's already moved without them. This is limited period pricing — once the window closes, it goes back to full price and it won't be discounted again.</div></div></div>
+
+      <div class="faq-item"><div class="faq-q">Which option should I get? <span class="faq-toggle">+</span></div><div class="faq-a"><div class="faq-a-inner">The Complete System. The Blueprint tells you what to do — the Operator Pack tells you exactly what to say. In a contracted market you need both, because the gap between strategy and execution is where deals die. At the current 50% off price, the bundle is only 250 AED more than either product alone — both products for less than the full price of one.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINAL CTA ─── -->
+<section class="final-cta">
+  <div class="container" style="position:relative;z-index:1;">
+    <span class="label">The Window Is Now</span>
+    <h2>The Agents Who Adapt in the Next 30 Days<br>Will <em>Define the Next Cycle</em></h2>
+    <p class="section-text" style="margin:0 auto 1.5rem;text-align:center;">90% of Dubai agents are operating the same way they were before the strikes. The market has already moved on without them. Fire-sale inventory is surfacing — off-plan assignments, motivated sellers, developer back-channel stock — and most agents don't know how to find it or who to sell it to.</p>
+    <p class="section-text" style="margin:0 auto 1rem;text-align:center;">The agents who can source discounted stock AND attract the buyers hunting for it will control both sides of every transaction. That's not an incremental improvement — it's a structural advantage that compounds with every deal.</p>
+    <p class="section-text" style="margin:0 auto 2.5rem;text-align:center;color:var(--accent);font-weight:500;">Every week you wait is a week your competitors are taking the leads you'll never see.</p>
+    <div class="hero-ctas">
+      <a href="https://buy.stripe.com/5kQ14o6S14lVd5Lb0B0RG0d" class="btn-primary">Get the Complete System — <span class="dynamic-price">745 AED</span></a>
+      <a href="https://buy.stripe.com/dRm00k3FP19J4zf5Gh0RG0b" class="btn-secondary">Start With Blueprint — 495 AED</a>
+    </div>
+    <p style="text-align:center;margin-top:1rem;font-size:0.76rem;color:var(--grey);">Instant access · Limited period pricing ends soon</p>
+  </div>
+</section>
+
+<!-- ─── DECORATIVE SKYLINE DIVIDER ─── -->
+<div class="section-divider-svg">
+<svg viewBox="0 0 1200 40" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <line x1="0" y1="20" x2="480" y2="20" stroke="rgba(201,168,76,0.08)" stroke-width="0.5"/>
+  <!-- Mini skyline silhouette -->
+  <rect x="490" y="10" width="3" height="10" fill="rgba(201,168,76,0.12)"/>
+  <rect x="496" y="6" width="4" height="14" fill="rgba(201,168,76,0.15)"/>
+  <rect x="503" y="12" width="3" height="8" fill="rgba(201,168,76,0.1)"/>
+  <path d="M510 14 L512 2 L514 14" fill="rgba(201,168,76,0.18)"/>
+  <rect x="518" y="8" width="4" height="12" fill="rgba(201,168,76,0.12)"/>
+  <rect x="525" y="11" width="3" height="9" fill="rgba(201,168,76,0.1)"/>
+  <rect x="531" y="6" width="5" height="14" fill="rgba(201,168,76,0.14)"/>
+  <rect x="539" y="9" width="3" height="11" fill="rgba(201,168,76,0.11)"/>
+  <rect x="545" y="12" width="4" height="8" fill="rgba(201,168,76,0.09)"/>
+  <!-- Dot accents -->
+  <circle cx="560" cy="20" r="1.5" fill="rgba(201,168,76,0.15)"/>
+  <circle cx="570" cy="20" r="1" fill="rgba(201,168,76,0.1)"/>
+  <circle cx="578" cy="20" r="1.5" fill="rgba(201,168,76,0.15)"/>
+  <!-- Right line -->
+  <line x1="590" y1="20" x2="1200" y2="20" stroke="rgba(201,168,76,0.08)" stroke-width="0.5"/>
+</svg>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="vertical-align: -3px; margin-right: 5px;"><path d="M2 20h20M5 20V8l7-5 7 5v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 20v-5h6v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Premier Blueprint</div>
+  <p>A framework for operating in Dubai real estate. &copy; 2026</p>
+  <p style="margin-top:0.5rem;"><a href="mailto:info@premierblueprint.com">info@premierblueprint.com</a></p>
+</footer>
+
+<!-- ─── STICKY BOTTOM BAR ─── -->
+<div class="sticky-bar-outer" id="stickyBar">
+  <div class="sticky-bar-badge">
+    <div class="sticky-bar-badge-dot"></div>
+    <span class="sticky-bar-badge-label">Limited Period</span>
+    <span class="sticky-bar-badge-timer" id="sticky-cd">21:59:59</span>
+    <span class="sticky-bar-badge-discount">50% OFF</span>
+  </div>
+  <div class="sticky-bar">
+    <div class="sticky-bar-text">Complete System</div>
+    <a href="#contents" class="sticky-bar-secondary">See what's inside ↓</a>
+    <div class="sticky-bar-price"><span class="old">1,490 AED</span><span class="new">745 AED</span></div>
+    <a href="https://buy.stripe.com/5kQ14o6S14lVd5Lb0B0RG0d" class="btn-primary">Get Access Now</a>
+  </div>
+</div>
+
+<script>
+// ─── COUNTDOWN TIMER — 22hr cycle, resets at 1hr remaining ───
+const CYCLE_MS = 22 * 60 * 60 * 1000;   // 22 hours
+const RESET_AT_MS = 2 * 60 * 60 * 1000; // reset when 2 hours left
+
+function getTimeRemaining() {
+  const now = Date.now();
+  const elapsed = now % CYCLE_MS;
+  let remaining = CYCLE_MS - elapsed;
+  if (remaining <= RESET_AT_MS) {
+    remaining = CYCLE_MS - (elapsed % CYCLE_MS) + CYCLE_MS;
+    remaining = remaining % CYCLE_MS;
+    if (remaining <= RESET_AT_MS) remaining = CYCLE_MS;
+  }
+  return remaining;
+}
+
+function updateCountdown() {
+  let diff = getTimeRemaining();
+  const h = Math.floor(diff / 3600000); diff %= 3600000;
+  const m = Math.floor(diff / 60000); diff %= 60000;
+  const s = Math.floor(diff / 1000);
+  const hS = String(h).padStart(2,'0'), mS = String(m).padStart(2,'0'), sS = String(s).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = hS;
+  document.getElementById('cd-mins').textContent = mS;
+  document.getElementById('cd-secs').textContent = sS;
+  document.getElementById('hero-cd').textContent = `${hS}:${mS}:${sS}`;
+  const stickyCd = document.getElementById('sticky-cd');
+  if (stickyCd) stickyCd.textContent = `${hS}:${mS}:${sS}`;
+}
+setInterval(updateCountdown, 1000); updateCountdown();
+
+// ─── FAQ ACCORDION ───
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement, isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// ─── SYLLABUS PILL TAB SWITCHER ───
+const sylSlider = document.getElementById('sylSlider');
+const sylBtns = document.querySelectorAll('.syl-pill-btn');
+const sylPanels = document.querySelectorAll('.syl-tab-panel');
+
+sylBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.tab;
+    // Update buttons
+    sylBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    // Slide the pill
+    sylSlider.classList.toggle('right', tab === 'operator');
+    // Switch panels
+    sylPanels.forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    // Close any open modules in the new panel
+    document.getElementById('tab-' + tab).querySelectorAll('.syl-module.open').forEach(m => m.classList.remove('open'));
+  });
+});
+
+// ─── SYLLABUS MODULE ACCORDION ───
+document.querySelectorAll('.syl-module-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const mod = header.parentElement;
+    if (mod.parentElement.classList.contains('syllabus-col') || mod.parentElement.classList.contains('syl-module-body')) {
+      const isOpen = mod.classList.contains('open');
+      mod.parentElement.querySelectorAll(':scope > .syl-module').forEach(s => s.classList.remove('open'));
+      if (!isOpen) mod.classList.add('open');
+    }
+  });
+});
+
+// ─── SCROLL REVEAL (staggered) ───
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }, i * 40);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.sol-card, .crisis-right, .test-card, .step-item, .price-card, .faq-item, .tactic-block, .opp-card, .compare-row:not(.header), .syl-module, .firesale-channel').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(18px)';
+  el.style.transition = 'opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
+  revealObserver.observe(el);
+});
+
+// ─── STICKY BAR ───
+const stickyBar = document.getElementById('stickyBar');
+const heroSection = document.querySelector('.hero');
+const pricingSection = document.getElementById('pricing');
+const contentsSection = document.getElementById('contents');
+const stickySecondary = document.querySelector('.sticky-bar-secondary');
+
+window.addEventListener('scroll', () => {
+  const hb = heroSection.getBoundingClientRect().bottom;
+  const pt = pricingSection.getBoundingClientRect().top;
+  const pb = pricingSection.getBoundingClientRect().bottom;
+  stickyBar.classList.toggle('visible', hb < 0 && !(pt < window.innerHeight && pb > 0));
+
+  // Hide "See what's inside" once user has scrolled past the contents section
+  if (stickySecondary && contentsSection) {
+    const cb = contentsSection.getBoundingClientRect().bottom;
+    stickySecondary.style.display = cb < 0 ? 'none' : '';
+  }
+}, { passive: true });
+
+// ─── SCROLL PROGRESS INDICATOR ───
+const scrollFill = document.getElementById('scrollFill');
+const scrollDot = document.getElementById('scrollDot');
+const progressTrack = document.querySelector('.scroll-progress-track');
+
+function updateScrollProgress() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = Math.min(scrollTop / docHeight, 1);
+  const pct = progress * 100;
+  if (scrollFill) scrollFill.style.height = pct + '%';
+  if (scrollDot && progressTrack) {
+    const trackH = progressTrack.offsetHeight;
+    scrollDot.style.top = (progress * trackH - 4) + 'px';
+  }
+}
+window.addEventListener('scroll', updateScrollProgress, { passive: true });
+updateScrollProgress();
+</script>
+</body>
+</html>
